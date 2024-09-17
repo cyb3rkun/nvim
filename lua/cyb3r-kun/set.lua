@@ -19,7 +19,11 @@ vim.opt.signcolumn = 'yes'
 
 
 vim.opt.list = true
-vim.opt.listchars = {tab = '⋙ ', trail = '.', nbsp = '_'}
+vim.opt.listchars = {tab = '➤ ', trail = '.', nbsp = '_'}
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 20
 vim.opt.cursorline = true
+
+vim.opt.clipboard = 'unnamedplus'
+
+

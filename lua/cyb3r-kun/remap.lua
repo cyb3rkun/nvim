@@ -13,5 +13,3 @@ vim.keymap.set('i', '<C-c>', '<Esc>')
 
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 
---Neotree remaps
-vim.keymap.set('n', '<leader>nt>', 'Neotree toggle')
