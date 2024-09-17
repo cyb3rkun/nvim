@@ -21,7 +21,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.list = true
 vim.opt.listchars = {tab = '➤ ', trail = '.', nbsp = '_'}
 
-vim.opt.scrolloff = 20
+vim.opt.scrolloff = 30
 vim.opt.cursorline = true
 
 vim.opt.clipboard = 'unnamedplus'

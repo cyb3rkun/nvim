@@ -72,6 +72,7 @@ return {
 				['<C-y>'] = cmp.mapping.confirm({select = true}),
 				['<S-Space>'] = cmp.mapping.complete(),
 				['<Tab>'] = cmp.mapping(function(fallback)
+
 					--This snippet will select item with tab and if no entry is selected, will confirm the first item
 					if cmp.visible() then
 						local entry = cmp.get_selected_entry()
@@ -82,6 +83,7 @@ return {
 					else
 						fallback()
 					end
+
 				end, {'i', 's', }),
 					['<CR>'] = cmp.mapping({
 						i = function(fallback)

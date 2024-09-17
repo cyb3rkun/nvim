@@ -22,9 +22,8 @@ return {
 		end)
 
 		vim.keymap.set('n', '<leader>pWs', function()
-			local word = vim.fn.epxand("<cWORD>")
+			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word})
 		end)
 	end
-
 }

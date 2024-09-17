@@ -5,6 +5,9 @@ return {
 		'nvim-lua/plenary.nvim'
 	},
 	opts = {
-		signs = true
+		signs = true,
+		keywords = {
+			TODO = { icon =" ", color = "info"},
+		},
 	}
 }

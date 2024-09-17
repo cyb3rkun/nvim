@@ -12,9 +12,7 @@ return {
 			}
 		}
 		vim.keymap.set('n', '<leader>t', '<Cmd>NvimTreeToggle<CR>')
-		vim.keymap.set('i', '<C-t>', '<Cmd>NvimTreeToggle<CR>')
 		vim.keymap.set('n', '<leader>l', '<Cmd>NvimTreeFocus<CR>')
-		vim.keymap.set('i', '<C-l>', '<Cmd>NvimTreeFocus<CR>')
 	end
 }
 
