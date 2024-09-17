@@ -22,6 +22,17 @@ return {
 				}),
 				previewer = conf.file_previewer({}),
 				sorter = conf.generic_sorter({}),
+				attach_mappings = function (_, map)
+					local selection = nil
+					map('i', '<C-d>', function()
+						if selection then
+							local index = selection.value.index
+							harpoon:list():rm_file(index)
+							print(index)
+						end
+					end)
+					return true
+				end
 			}):find()
 		end
 
