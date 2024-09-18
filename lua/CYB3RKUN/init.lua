@@ -1,7 +1,6 @@
-require('cyb3r-kun.remap')
-require('cyb3r-kun.set')
-require('cyb3r-kun.lazy_init')
-
+require('CYB3RKUN.remap')
+require('CYB3RKUN.set')
+require('CYB3RKUN.lazy_init')
 
 local augroup = vim.api.nvim_create_augroup
 local VoylinGroup = augroup('Voylin', {})

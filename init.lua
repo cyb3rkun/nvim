@@ -1,3 +1,2 @@
 print("hello")
-
-require('cyb3r-kun')
+require('CYB3RKUN')

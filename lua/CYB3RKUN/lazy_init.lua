@@ -12,6 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	spec = 'cyb3r-kun.lazy',
+	spec = 'CYB3RKUN.plugins',
 	change_detection = {notify = false}
 })
