@@ -9,6 +9,7 @@ vim.opt.tabstop = 8
 vim.opt.softtabstop = 8
 vim.opt.shiftwidth = 8
 vim.opt.expandtab = false
+vim.opt.linespace = 3
 
 vim.opt.breakindent = true
 vim.opt.smartindent = true
@@ -19,11 +20,9 @@ vim.opt.signcolumn = 'yes'
 
 
 vim.opt.list = true
-vim.opt.listchars = {tab = '➤ ', trail = '.', nbsp = '_'}
+vim.opt.listchars = {tab = '➤ ', trail = '~', nbsp = '_'}
 
 vim.opt.scrolloff = 30
 vim.opt.cursorline = true
 
 vim.opt.clipboard = 'unnamedplus'
-
-
