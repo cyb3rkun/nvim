@@ -10,6 +10,7 @@ vim.keymap.set('n', '<leader>yap', '\"+yap')
 vim.keymap.set('v', '<leader>yap', '\"+yap')
 
 vim.keymap.set('i', '<C-o>', '<Esc>')
+vim.keymap.set('v', '<C-o>', '<Esc>')
 
 vim.keymap.set('n', '<leader>g', ':LazyGit<CR>')
 
