@@ -45,6 +45,7 @@ return {
 			--lsp for lua
 			lspconfig.lua_ls.setup({})
 
+			local is_godot_server_running = false
 			--lsp for godot-gdscript (currently not working perfectly but works well enough)
 			vim.api.nvim_create_autocmd("BufEnter", {
 				group = vim.api.nvim_create_augroup("AutoStartGodotServer", {}),
@@ -62,18 +63,17 @@ return {
 
 					-- a boolean to keep track of weather or not the server has been started
 					-- using this is a simpler method than making a function to check the tcp sockets (I just wasn't feeling like doing that and this is much simpler)
-					local is_godot_server_running = false
 
 					-- If this is a godot project directory then start the server and the server hasn't been started then start it
 					if gdproject() and not is_godot_server_running then
 						print(filepath)
 						print("gdproject found... Starting server at 127.0.0.1:6004")
 						vim.fn.serverstart("127.0.0.1:6004")
-						is_godot_server_running = false
+						is_godot_server_running = true
 					end
 				end
 			})
-			lspconfig.gdscript.setup({ capabilities = capabilities })
+			lspconfig.gdscript.setup(capabilities)
 
 			--lspAttach to set keymaps once a language server protocol has been connected 
 			vim.api.nvim_create_autocmd("lspAttach", {
