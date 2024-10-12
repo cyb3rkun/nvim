@@ -17,7 +17,7 @@ return {
 			},
 
 			-- WARN: @ symbol cannot be used in todo-comment tag
-			TODO = { icon = " ", color = "info" },
+			TODO = { icon = " ", color = "info" },
 			HACK = { icon = " ", color = "warning" },
 			WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
 			PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
@@ -35,6 +35,23 @@ return {
 					"KUDOS",
 					"CREDENCE_TO",
 					"SPECIAL_THANKS_TO",
+				},
+			},
+			SUBSEKTION = {
+				icon = "󰚟",
+				color = "#0093AF",
+				alt = {
+					"SUBHEADING",
+					"SUBCATEGORY",
+				},
+			},
+			SECTION = {
+				icon = "󰚟",
+				color = "#007FFF",
+				alt = {
+					"HEADING",
+					"LABEL",
+					"CATEGORY",
 				},
 			},
 
@@ -66,36 +83,3 @@ return {
 		},
 	},
 }
--- TODO:
--- HACK:
--- BUG:
--- FIXME:
--- NOTE:
--- PERF:
--- CREDIT:
--- ATTRIBUTE:
--- COMMEND:
--- ACKNOWLADGEMENT:
--- KUDOS:
--- HAT_TIP:
--- RECOGNITION:
--- CREDENCE_TO:
--- SPECIAL_THANKS_TO:
---
--- YT:
--- YT_VID:
--- YT_CHANNEL:
---
--- REDDIT:
--- REDDITOR:
--- R/u/: put reddit username here
---
--- INSTA:
--- INSTAGRAM:
---
--- X:
--- TWITTER:
--- TWEET:
---
--- GITHUB:
--- GIT:

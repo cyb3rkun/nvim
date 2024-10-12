@@ -9,25 +9,26 @@ return {
 		local harpoon = require("harpoon")
 		harpoon:setup({})
 
-		vim.keymap.set("n", "<leader>a", function()
+		local keymap = vim.keymap.set
+		keymap("n", "<leader>a", function()
 			harpoon:list():add()
 		end)
 
-		vim.keymap.set("n", "<C-e>", function()
+		keymap("n", "<C-e>", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end)
 
-		vim.keymap.set("n", "<C-h>", function()
+		keymap("n", "<C-h>", function()
 			harpoon:list():select(1)
-		end)
-		vim.keymap.set("n", "<C-j>", function()
+		end, { desc = "Go to first harpoon hook" })
+		keymap("n", "<C-j>", function()
 			harpoon:list():select(2)
-		end)
-		vim.keymap.set("n", "<C-k>", function()
+		end, { desc = "Go to second harpoon hook" })
+		keymap("n", "<C-k>", function()
 			harpoon:list():select(3)
-		end)
-		vim.keymap.set("n", "<C-l>", function()
+		end, { desc = "Go to third harpoon hook" })
+		keymap("n", "<C-l>", function()
 			harpoon:list():select(4)
-		end)
+		end, { desc = "Go to fourth harpoon hook" })
 	end,
 }

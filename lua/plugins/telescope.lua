@@ -25,7 +25,7 @@ return {
 							["<C-j>"] = actions.move_selection_next, --move to next selection
 
 							-- NOTE: this mapping is commented out because I still don't completely understand qfl and this will change when I do
-							--["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, --add item to quick fix list and open the quick fix list
+							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, --add item to quick fix list and open the quick fix list
 						},
 					},
 				},
@@ -83,11 +83,5 @@ return {
 			})
 			require("telescope").load_extension("ui-select")
 		end,
-	},
-
-	-- NOTE: dressing is a plugin to give a prettier UI when asked for input text
-	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
 	},
 }

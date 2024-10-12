@@ -10,8 +10,10 @@ return {
 		local ui = require('dapui')
 		require('dapui').setup()
 
+		local keymap = vim.keymap.set
 		-- Debugging keymaps
 		vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle breakpoint' })
+
 		vim.keymap.set('n', '<leader><F5>', dap.continue, { desc = 'Debug: Start/Continue' })
 		vim.keymap.set('n', '<F7>', dap.step_over, { desc = 'Debug: Step over' })
 		vim.keymap.set('n', '<F8>', dap.step_into, { desc = 'Debug: Step into' })

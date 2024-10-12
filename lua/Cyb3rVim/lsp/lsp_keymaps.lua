@@ -4,7 +4,7 @@
 -- YT: @joseanmartinez
 -- YT_VID: https://www.youtube.com/watch?v=6pAG3BHurdM
 -- GITHUB: @Geerayef/Dotfiles
---https://github.com/Geerayef/Dotfiles/blob/6dd72f17130a8d5f76b5a919594990c8497cc4b9/.config/nvim/lua/plugins/lsp.lua
+-- https://github.com/Geerayef/Dotfiles/blob/6dd72f17130a8d5f76b5a919594990c8497cc4b9/.config/nvim/lua/plugins/lsp.lua
 
 -- For cinciseness
 local keymap = vim.keymap.set
@@ -81,9 +81,6 @@ local keymaps = function(client, bufnr)
 
 	-- NOTE: show signature help for what is currently under the cursor
 	keymap("n", "<leader>k", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
-
-	-- NOTE: format the file
-	keymap("n", "<leader>gf", vim.lsp.buf.format, {})
 end
 
 -- NOTE: return the keymaps variabl function when this file is called

@@ -9,14 +9,14 @@ vim.opt.relativenumber = true
 vim.opt.showmode = true
 
 -- NOTE: show the maximum line length that you don't want to exceed
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "72"
 
 -- NOTE: Show the real line number %=%{v:lnum}
 -- NOTE: then the relative line number
 -- %=%{v:relnum? before? v:relnum after? v:lnum currentline = realnum}
 -- WARN: vim.opt.relativenumber has to be set to true or
 -- relative line numbers won't update"
-vim.opt.statuscolumn = " %s %=%{v:lnum} %=%{v:relnum?v:relnum:v:lnum} "
+vim.opt.statuscolumn = "%s%=%{v:lnum}:%=%{v:relnum?v:relnum:v:lnum} "
 
 -- NOTE: set tab and indentation options tab width = 6
 vim.opt.tabstop = 6
@@ -34,15 +34,19 @@ vim.opt.wrap = false
 vim.opt.termguicolors = true
 
 -- NOTE: enables the below list chars
-vim.opt.list = true
-vim.opt.listchars = { tab = "➤ ", trail = "~", nbsp = "␣" }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = "➤ ", trail = "~", nbsp = "␣" }
 
--- NOTE: prevents the cursor from going closer than 30 lines to the top or bottom.
+-- NOTE: prevents the cursor from going closer than 30 lines to the
+-- top or bottom.
 -- WARN: does not work near end or beginning of file
 vim.opt.scrolloff = 30
 
 -- NOTE: Highlight the current line
 vim.opt.cursorline = true
 
--- NOTE: Makes possible to yank to clipboard
-vim.opt.clipboard = "unnamedplus"
+-- NOTE: Automatically copy to clipboard when yanking text
+-- My opinion = This is stupid and annoying if you don't know this is
+-- what's causing it.
+-- I'd rather just specify "+ y to yank to clipboard
+-- vim.opt.clipboard = "unnamedplus"

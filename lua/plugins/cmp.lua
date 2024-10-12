@@ -67,6 +67,9 @@ return {
 				-- NOTE: use control plus space to manually open the completions list
 				["<C-Space>"] = cmp.mapping.complete(),
 
+				-- NOTE: Abort the completion with <C-e>
+				["<C-e>"] = cmp.mapping.abort(),
+
 				-- NOTE: when tab is pressed call a fallback function to automatically
 				-- select the first completion item and confirm that to be the selection
 				-- So just press tab to automatically complete with the first item in the list
@@ -113,7 +116,7 @@ return {
 			-- NOTE: here we define the format that completions shoudl be shown insert
 			formatting = {
 				format = lspkind.cmp_format({
-					maxwidth = 50,
+					maxwidth = 100,
 					ellipsis_char = "...",
 				}),
 			},
