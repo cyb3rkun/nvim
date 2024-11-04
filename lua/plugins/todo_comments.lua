@@ -2,7 +2,10 @@ return {
 	-- CREDIT:
 	-- GITHUB: @folke
 	"folke/todo-comments.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	-- NOTE: I added BufEnter to this list since I noticed that
+	-- sometimes It wouldn't load before you enter insert mode if
+	-- BufEnter weren't in the events table
+	event = { "BufReadPre", "BufNewFile", "BufEnter" },
 	dependencies = { "nvim-lua/plenary.nvim" },
 
 	opts = {
@@ -17,12 +20,12 @@ return {
 			},
 
 			-- WARN: @ symbol cannot be used in todo-comment tag
-			TODO = { icon = " ", color = "info" },
-			HACK = { icon = " ", color = "warning" },
-			WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-			PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-			NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-			TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+			TODO = { icon = "", color = "info" },
+			HACK = { icon = "", color = "warning" },
+			WARN = { icon = "", color = "warning", alt = { "WARNING", "XXX" } },
+			PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+			NOTE = { icon = "", color = "hint", alt = { "INFO" } },
+			TEST = { icon = "⏲", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 			CREDIT = {
 				icon = " ", -- NOTE: we define an icon to be used for this tag
 				color = "#00FFFF", -- NOTE: we define a color to be used for this tag

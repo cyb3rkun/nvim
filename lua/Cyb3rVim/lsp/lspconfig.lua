@@ -13,7 +13,7 @@ return {
 	-- NOTE:  not all of the below plugins are strictly required for nvim-lsp to function but are instead
 	-- some extras to make things more convenient
 	dependencies = {
-		"hrsh7th/nvim-cmp", -- WARN: this one is required for nvim-lsp to work
+		-- "hrsh7th/nvim-cmp", -- WARN: this one is required for nvim-lsp to work
 		"hrsh7th/cmp-nvim-lsp", -- WARN: this one is required for nvim-lsp to work
 		"hrsh7th/cmp-buffer", -- WARN: I'm uncertain if this one is strictly required for nvim-lsp but I believe it is
 		"hrsh7th/cmp-path", -- WARN: This plugin is not strictly required for nvim-lsp but it allows for filepaths in autocompletion
@@ -66,6 +66,12 @@ return {
 			vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
 				vim.lsp.buf.format()
 			end, { desc = "Format current buffer with lsp" })
+
+			-- NOTE: It would be nice to have GDscript Documentation-
+			-- comments show up in cmp but I can't get this to work
+			-- at the moment.
+			-- I could have sword that it used to work but I might
+			-- have just been dreaming
 		end
 
 		-- NOTE: Change the Diagnostic symbols in the gutter
@@ -85,17 +91,26 @@ return {
 			on_attach = lsp_attach, -- NOTE: and here we give it our keymaps from lsp_attach variable above
 		})
 
+		-- NOTE: GDscript LSP setup
+		lsp.gdscript.setup({
+			capabilities = capabilities,
+			on_attach = lsp_attach,
+		})
+
 		-- NOTE: Clang Server This is For C C++ JAVA? and a bunch of others
 		-- NOTE: here we setup the clangd lsp that is used for C, C++ and other languages
 		-- it is basically the same as the lua language server with some extra changes
 		lsp.clangd.setup({
-			on_attach = lsp_attach, -- NOTE: once again we pass in our keymaps
 			capabilities = capabilities, -- NOTE: once again we pass in our capabilities
+			on_attach = lsp_attach, -- NOTE: once again we pass in our keymaps
 
 			-- NOTE: with the cmd field we specify where the lsp executable is
 			-- normally you wouldn't have to define this and you can just leave it out but if you'd like to use it this way make sure
 			-- to change /home/cyb3rkun/ to home/username/etc
-			cmd = { "/home/cyb3rkun/.local/share/nvim/mason/bin/clangd" },
+			-- NOTE: I did this to get tab indenting for c files but it should
+			-- now work if you specify a .clang-format file with
+			-- your desired formatting options
+			-- cmd = { "/home/cyb3rkun/.local/share/nvim/mason/bin/clangd" },
 
 			-- NOTE: here we pass in the filetypes that we want clangd to work with
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },

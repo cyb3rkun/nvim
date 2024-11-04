@@ -13,6 +13,7 @@ return {
 		treesitter.setup({
 			sync_install = false,
 			auto_install = true,
+			ignore_install = {},
 
 			ensure_installed = {
 				"gdscript",

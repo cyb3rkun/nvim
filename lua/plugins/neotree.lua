@@ -15,15 +15,17 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 
-	-- NOTE: here we define the options we want for neotree
-	opts = {
-		window = {
-			powition = "left", -- NOTE: I like my file tree to be on the left
-		},
-	},
-
 	-- NOTE: in the config function we define some keymaps to work with neotree
 	config = function()
+		-- NOTE: here we define the options we want for neotree
+		require("neo-tree").setup({
+			-- window = {
+			-- 	position = "left",
+			-- 	width = 30,
+			-- },
+		})
+
+		-- NOTE: Keymaps defined here:
 		vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>")
 		vim.keymap.set("n", "<leader>l", ":Neotree focus<CR>")
 	end,
