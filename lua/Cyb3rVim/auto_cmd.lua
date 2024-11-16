@@ -40,9 +40,6 @@ autocmd("BufEnter", {
 -- NOTE: This Autocmd will automatically run when the current working
 -- directory is changed to check for a project.godot file and if there
 -- is one it will start the server for godot dap, and lsp automagically.
--- However Doing it this way will require you to launch Godot before
--- opening neovim or else this autocmd will fail to connect to the server.
--- if you forget to open godot first you can still use the
 -- <leader>sg keymap to launch the server manually
 autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
