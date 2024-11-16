@@ -36,3 +36,31 @@ autocmd("BufEnter", {
 		end
 	end,
 })
+
+-- NOTE: This Autocmd will automatically run when the current working
+-- directory is changed to check for a project.godot file and if there
+-- is one it will start the server for godot dap, and lsp automagically.
+-- However Doing it this way will require you to launch Godot before
+-- opening neovim or else this autocmd will fail to connect to the server.
+-- if you forget to open godot first you can still use the
+-- <leader>sg keymap to launch the server manually
+autocmd({ "VimEnter", "DirChanged" }, {
+	callback = function()
+		local server_address = "127.0.0.1:6004"
+		local cwd = vim.fn.getcwd()
+		local project_file = cwd .. "/project.godot"
+		if vim.fn.filereadable(project_file) == 1 then
+			print("Found Godot Project File. Starting Server")
+			vim.fn.serverstart("127.0.0.1:6004")
+			print(vim.inspect(vim.fn.serverlist()))
+		else
+			local servers = vim.fn.serverlist()
+			for _, server in ipairs(servers) do
+				if server == server_address then
+					vim.fn.serverstop(server_address)
+				end
+			end
+			print("No Godot Project File found. Foregoeing serverstart")
+		end
+	end,
+})
