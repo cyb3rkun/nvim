@@ -15,8 +15,8 @@ return {
 	dependencies = {
 		-- "hrsh7th/nvim-cmp", -- WARN: this one is required for nvim-lsp to work
 		"hrsh7th/cmp-nvim-lsp", -- WARN: this one is required for nvim-lsp to work
-		"hrsh7th/cmp-buffer", -- WARN: I'm uncertain if this one is strictly required for nvim-lsp but I believe it is
-		"hrsh7th/cmp-path", -- WARN: This plugin is not strictly required for nvim-lsp but it allows for filepaths in autocompletion
+		-- "hrsh7th/cmp-buffer", -- WARN: I'm uncertain if this one is strictly required for nvim-lsp but I believe it is
+		-- "hrsh7th/cmp-path", -- WARN: This plugin is not strictly required for nvim-lsp but it allows for filepaths in autocompletion
 
 		-- NOTE: this will ensure that mason is loaded before lsp is set up.
 		-- we use mason to manage lsps, linters, formatters and Debug adapters

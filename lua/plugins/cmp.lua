@@ -5,7 +5,7 @@
 -- containing the plugin url, the dependencies field, and the config = function()
 return {
 	"hrsh7th/nvim-cmp", -- NOTE: the github url for the autocompletion plugin
-	event = "InsertEnter", -- NOTE: when the plugin should be loaded [when entering inser mode]
+	event = { "InsertEnter", "CmdlineEnter" }, -- NOTE: when the plugin should be loaded [when entering inser mode]
 
 	dependencies = { -- NOTE: here we define the dependencies for nvim-cmp
 		"hrsh7th/cmp-buffer", -- WARN: this is required for cmp
