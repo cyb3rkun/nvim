@@ -17,7 +17,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp", -- WARN: this one is required for nvim-lsp to work
 		"hrsh7th/cmp-buffer", -- WARN: I'm uncertain if this one is strictly required for nvim-lsp but I believe it is
 		"hrsh7th/cmp-path", -- WARN: This plugin is not strictly required for nvim-lsp but it allows for filepaths in autocompletion
-		"hrsh7th/cmp-cmdline", -- NOTE: as of right now I'm not certain as to what this does
 
 		-- NOTE: this will ensure that mason is loaded before lsp is set up.
 		-- we use mason to manage lsps, linters, formatters and Debug adapters
@@ -123,7 +122,8 @@ return {
 				".compile-commands.json",
 				".compile-flags.txt",
 				".configure.ac",
-				".git"
+				".git",
+				"project.godot"
 			),
 			single_file_support = true, -- NOTE: Enable single file support for clangd
 		})

@@ -33,6 +33,7 @@ return {
 
 			-- NOTE: load the fzf performance extension for telescope
 			telescope.load_extension("fzf")
+			telescope.load_extension("noice")
 			local builtin = require("telescope.builtin")
 
 			-- NOTE: in this section we define some keymaps to be used with telescope

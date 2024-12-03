@@ -30,3 +30,5 @@ keymap("n", "<leader>nh", "<CMD>nohl<CR>")
 keymap("n", "<leader>sg", function()
 	vim.fn.serverstart("127.0.0.1:6004")
 end, { noremap = true })
+
+vim.keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Messages" })

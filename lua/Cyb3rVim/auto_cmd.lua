@@ -44,20 +44,26 @@ autocmd("BufEnter", {
 autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
 		local server_address = "127.0.0.1:6004"
-		local cwd = vim.fn.getcwd()
-		local project_file = cwd .. "/project.godot"
-		if vim.fn.filereadable(project_file) == 1 then
-			print("Found Godot Project File. Starting Server")
-			vim.fn.serverstart("127.0.0.1:6004")
-			print(vim.inspect(vim.fn.serverlist()))
-		else
-			local servers = vim.fn.serverlist()
-			for _, server in ipairs(servers) do
-				if server == server_address then
-					vim.fn.serverstop(server_address)
-				end
+		local server_started
+
+		local current_working_directory = vim.fn.getcwd() .. "/"
+		local root_file_pattern = {
+			"project.godot",
+			".gdproject",
+		}
+
+		for _, root_file_path in ipairs(root_file_pattern) do
+			print("looking for: [" .. root_file_path .. "]")
+			local file_path = current_working_directory .. root_file_path
+			print(file_path)
+
+			if vim.fn.filereadable(file_path) == 1 then
+				print("Found Godot Project root pattern... Starting LSP")
+				vim.fn.serverstart(server_address)
+				return
+			else
+				vim.fn.serverstop(server_address)
 			end
-			print("No Godot Project File found. Foregoeing serverstart")
 		end
 	end,
 })

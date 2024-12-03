@@ -110,7 +110,7 @@ return {
 				{ name = "luasnip" }, -- NOTE: The second source is luasnip
 				{ name = "path" }, -- NOTE: after those we will get file paths
 				{ name = "buffer" }, -- NOTE: this will allow snippets of text that is already in the current buffer to be used as a completion source
-				{ name = "gdscript" }, -- NOTE: this is not currently set up but will allow neovim to get completions for gdscript
+				{ name = "gdscript" }, -- NOTE: completions for gdscript
 			},
 
 			-- NOTE: here we define the format that completions shoudl be shown insert
@@ -120,6 +120,26 @@ return {
 					ellipsis_char = "...",
 				}),
 			},
+		})
+
+		cmp.setup.cmdline("/", {
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{
+					name = "cmdline",
+					option = {
+						ignore_cmds = { "Man", "!" },
+					},
+				},
+			}),
 		})
 
 		-- NOTE: when selecting an item brackets get autocompleted
