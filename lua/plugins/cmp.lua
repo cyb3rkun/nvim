@@ -140,6 +140,11 @@ return {
 					},
 				},
 			}),
+			-- NOTE: I added this so that it wouldn't autocomplete
+			-- :q or :w commands
+			completion = {
+				keyword_length = 2,
+			},
 		})
 
 		-- NOTE: when selecting an item brackets get autocompleted
