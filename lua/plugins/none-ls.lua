@@ -9,7 +9,12 @@ return {
 			sources = {
 				-- add linters and formatters and diagnostics here
 				-- a full list of supported languages for none-ls can be found on their github
-				null_ls.builtins.formatting.stylua,
+				-- null_ls.builtins.formatting.stylua,
+				--
+				-- NOTE: there is no need to specifically add them
+				-- here if you set them up in formatting and
+				-- lspconfig.
+				-- This is mainly just for gdscript
 				null_ls.builtins.formatting.gdformat,
 				null_ls.builtins.diagnostics.gdlint,
 			},

@@ -19,10 +19,10 @@ return {
 	config = function()
 		-- NOTE: here we define the options we want for neotree
 		require("neo-tree").setup({
-			-- window = {
-			-- 	position = "left",
-			-- 	width = 30,
-			-- },
+			window = {
+				position = "left",
+				width = 30,
+			},
 		})
 
 		-- NOTE: Keymaps defined here:

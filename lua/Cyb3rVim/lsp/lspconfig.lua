@@ -96,6 +96,11 @@ return {
 			on_attach = lsp_attach,
 		})
 
+		lsp.bashls.setup({
+			capabilities = capabilities,
+			on_attach = lsp_attach,
+		})
+
 		-- NOTE: Clang Server This is For C C++ JAVA? and a bunch of others
 		-- NOTE: here we setup the clangd lsp that is used for C, C++ and other languages
 		-- it is basically the same as the lua language server with some extra changes
