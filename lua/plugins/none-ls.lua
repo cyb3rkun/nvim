@@ -11,12 +11,20 @@ return {
 				-- a full list of supported languages for none-ls can be found on their github
 				-- null_ls.builtins.formatting.stylua,
 				--
-				-- NOTE: there is no need to specifically add them
+				-- note: there is no need to specifically add them
 				-- here if you set them up in formatting and
 				-- lspconfig.
-				-- This is mainly just for gdscript
+				-- this is mainly just for gdscript
+
 				null_ls.builtins.formatting.gdformat,
+				-- null_ls.builtins.formatting.stylua,
 				null_ls.builtins.diagnostics.gdlint,
+
+				-- NOTE: THIS Has to be here to get c# formatting
+				-- the same as I have it in c++ and C
+				-- You can still Use <leader>mp to format it
+				-- but <leader>gf seems to be a bit faster
+				null_ls.builtins.formatting.clang_format,
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})

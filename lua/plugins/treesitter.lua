@@ -5,6 +5,7 @@ return {
 	build = ":TSUpdate",
 
 	dependencies = {
+		"nvim-treesitter/nvim-treesitter-textobjects",
 		"windwp/nvim-ts-autotag",
 	},
 
@@ -18,6 +19,7 @@ return {
 
 			ensure_installed = {
 				"gdscript",
+				"c_sharp",
 				"godot_resource",
 				"gdshader",
 				"lua",
@@ -47,8 +49,8 @@ return {
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
+					init_selection = "<M-space>",
+					node_incremental = "<M-space>",
 					scope_incremental = false,
 					node_decremental = "<bs>",
 				},

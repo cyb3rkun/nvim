@@ -90,13 +90,29 @@ return {
 			on_attach = lsp_attach, -- NOTE: and here we give it our keymaps from lsp_attach variable above
 		})
 
-		-- NOTE: GDscript LSP setup
+		-- NOTE: GDscript LSP And c# for gamedev
 		lsp.gdscript.setup({
 			capabilities = capabilities,
 			on_attach = lsp_attach,
 		})
+		lsp.gdshader_lsp.setup({
+			capabilities = capabilities,
+			on_attach = lsp_attach,
+			cmd = { "/home/cyb3rkun/.local/share/gdshader-lsp/gdshader-lsp" },
+		})
+
+		lsp.csharp_ls.setup({
+			capabilities = capabilities,
+			on_attach = lsp_attach,
+			single_file_support = true,
+		})
 
 		lsp.bashls.setup({
+			capabilities = capabilities,
+			on_attach = lsp_attach,
+		})
+
+		lsp.marksman.setup({
 			capabilities = capabilities,
 			on_attach = lsp_attach,
 		})
@@ -114,6 +130,7 @@ return {
 			-- NOTE: I did this to get tab indenting for c files but it should
 			-- now work if you specify a .clang-format file with
 			-- your desired formatting options
+
 			-- cmd = { "/home/cyb3rkun/.local/share/nvim/mason/bin/clangd" },
 
 			-- NOTE: here we pass in the filetypes that we want clangd to work with

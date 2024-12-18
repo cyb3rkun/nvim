@@ -19,6 +19,9 @@ return {
 	config = function()
 		-- NOTE: here we define the options we want for neotree
 		require("neo-tree").setup({
+			popup_border_style = "rounded",
+			enable_git_status = true,
+			use_libuv_file_watcher = true,
 			window = {
 				position = "left",
 				width = 30,
@@ -26,7 +29,7 @@ return {
 		})
 
 		-- NOTE: Keymaps defined here:
-		vim.keymap.set("n", "<leader>t", ":Neotree toggle<CR>")
-		vim.keymap.set("n", "<leader>l", ":Neotree focus<CR>")
+		vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle<CR>")
+		vim.keymap.set("n", "<leader>l", "<cmd>Neotree focus<CR>")
 	end,
 }

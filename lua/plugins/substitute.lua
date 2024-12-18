@@ -9,9 +9,9 @@ return {
 
 		local keymap = vim.keymap.set
 
-		keymap("n", "s", substitute.operator, { desc = "Substitute with motion" })
-		keymap("n", "ss", substitute.line, { desc = "Substitute line" })
-		keymap("n", "S", substitute.eol, { desc = "Substitute to end of line" })
-		keymap("x", "s", substitute.line, { desc = "Substitute in visual mode" })
+		keymap("n", "q", substitute.operator, { desc = "Substitute with motion" })
+		keymap("n", "qq", substitute.line, { desc = "Substitute line" })
+		keymap("n", "Q", substitute.eol, { desc = "Substitute to end of line" })
+		keymap("x", "q", substitute.line, { desc = "Substitute in visual mode" })
 	end,
 }

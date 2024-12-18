@@ -1,5 +1,4 @@
--- DESCRIPTION:
--- set vim options in this file
+-- DESCRIPTION: set vim options in this file
 
 vim.opt.guicursor = ""
 vim.opt.mouse = "a" --Mouse Support
@@ -40,13 +39,7 @@ vim.opt.termguicolors = true
 -- NOTE: prevents the cursor from going closer than 30 lines to the
 -- top or bottom.
 -- WARN: does not work near end or beginning of file
-vim.opt.scrolloff = 30
+vim.opt.scrolloff = 15
 
 -- NOTE: Highlight the current line
 vim.opt.cursorline = true
-
--- NOTE: Automatically copy to clipboard when yanking text
--- My opinion = This is stupid and annoying if you don't know this is
--- what's causing it.
--- I'd rather just specify "+ y to yank to clipboard
--- vim.opt.clipboard = "unnamedplus"

@@ -81,6 +81,11 @@ local keymaps = function(client, bufnr)
 
 	-- NOTE: show signature help for what is currently under the cursor
 	keymap("n", "<leader>k", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
+
+	keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+	keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+	keymap("n", "<leader>t", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+	keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 end
 
 -- NOTE: return the keymaps variabl function when this file is called

@@ -41,10 +41,10 @@ autocmd("BufEnter", {
 -- directory is changed to check for a project.godot file and if there
 -- is one it will start the server for godot dap, and lsp automagically.
 -- <leader>sg keymap to launch the server manually
+local server_started
 autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
 		local server_address = "127.0.0.1:6004"
-		local server_started
 
 		local current_working_directory = vim.fn.getcwd() .. "/"
 		local root_file_pattern = {
@@ -57,9 +57,10 @@ autocmd({ "VimEnter", "DirChanged" }, {
 			local file_path = current_working_directory .. root_file_path
 			print(file_path)
 
-			if vim.fn.filereadable(file_path) == 1 then
+			if vim.fn.filereadable(file_path) == 1 and not server_started then
 				print("Found Godot Project root pattern... Starting LSP")
 				vim.fn.serverstart(server_address)
+				server_started = true
 				return
 			else
 				vim.fn.serverstop(server_address)

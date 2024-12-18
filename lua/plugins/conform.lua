@@ -17,13 +17,14 @@ return {
 				lua = { "stylua" }, -- NOTE: stylua for lua formatting
 				clang = { "clang-format" }, -- NOTE: clang-format for c cpp and others
 				gdscript = { "gdformat" }, -- NOTE: gdformat for gdscript
+				csharp = { "clang-format" },
 			},
 
 			-- NOTE: this will cause it to format a file when you save
 			format_on_save = {
 				lsp_fallback = true,
 				async = false,
-				timeout_ms = 1000,
+				timeout_ms = 500,
 			},
 		})
 
@@ -35,8 +36,8 @@ return {
 				-- NOTE: here we call the format function from conform and pass it our formatting options
 				conform.format({
 					lsp_fallback = true,
-					async = false,
-					timeout_ms = 1000,
+					async = true,
+					timeout_ms = 500,
 				})
 			end,
 			-- NOTE: here we give a description as to what this keymap does
