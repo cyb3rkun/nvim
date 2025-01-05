@@ -44,7 +44,7 @@ return {
 					default_keybinds = true,
 				},
 			},
-			vim.keymap.set("n", "<localleader>ii", "<CMD>Neorg index<CR>")
+			vim.keymap.set("n", "<localleader>ii", "<CMD>Neorg index<CR>"),
 		})
 	end,
 }

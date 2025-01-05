@@ -5,11 +5,13 @@
 -- NOTE: I'm comfortable with the default keymaps you can find on the github page
 return {
 	"numToStr/Comment.nvim",
-	event = { "BufReadPre", "BufNewFile" }, -- NOTE: this plugin gets loaded when opening or creating a new file
+	-- NOTE: this plugin gets loaded when opening or creating a new file
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local comment = require("Comment")
 		comment.setup()
-		-- NOTE: if you want to customize the configuration define it after setup
-		-- to get a list of options that can be modified you can run :h comment.config
+		-- NOTE: if you want to customize the configuration
+		-- define it after setup to get a list of options that can
+		-- be modified you can run :h comment.config
 	end,
 }

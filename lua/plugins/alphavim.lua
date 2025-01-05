@@ -61,23 +61,6 @@ return {
 			dashboard.button("R", "󱘞   Ripgrep", ":Telescope live_grep<CR>"),
 			dashboard.button("q", "󰗼   Quit", ":qa<CR>"),
 		}
-		-- NOTE: function to calculate the position of the text so that it can be centered
-		-- local function centerText(text, width)
-		-- 	local totalPadding = width - #text
-		-- 	local leftPadding = math.floor(totalPadding / 2)
-		-- 	local rightPadding = totalPadding - leftPadding
-		-- 	return string.rep(" ", leftPadding) .. text .. string.rep(" ", rightPadding)
-		-- end
-		--
-		-- dashboard.section.footer.val = {
-		-- 	centerText("Welcom to Cyb3rVim", 50),
-		-- 	" ",
-		-- 	centerText("NvimOnMy_Way", 50),
-		-- 	centerText(date, 50),
-		-- 	centerText(time, 50),
-		-- 	centerText(version, 50),
-		-- }
-		--
 		-- NOTE: Send the config to alpha
 		alpha.setup(dashboard.opts)
 

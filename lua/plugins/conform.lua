@@ -20,7 +20,8 @@ return {
 				csharp = { "clang-format" },
 			},
 
-			-- NOTE: this will cause it to format a file when you save
+			-- NOTE: this will cause it to format a file
+			-- when you save
 
 			-- format_on_save = {
 			-- 	lsp_fallback = true,
