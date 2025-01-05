@@ -16,9 +16,9 @@ return {
 				-- lspconfig.
 				-- this is mainly just for gdscript
 
-				null_ls.builtins.formatting.gdformat,
+				-- null_ls.builtins.formatting.gdformat,
 				-- null_ls.builtins.formatting.stylua,
-				null_ls.builtins.diagnostics.gdlint,
+				-- null_ls.builtins.diagnostics.gdlint,
 
 				-- NOTE: THIS Has to be here to get c# formatting
 				-- the same as I have it in c++ and C

@@ -10,6 +10,8 @@ return {
 		lint.linters_by_ft = {
 			-- NOTE: Specify Languages here
 			clang = { "cpplint" },
+			-- NOTE: turned this off due to duplicate warnings
+			-- gdscript = { "gdlint" },
 		}
 
 		-- NOTE: Setup linting autocmd group
@@ -25,6 +27,7 @@ return {
 
 		-- NOTE: create keymap to manually start linting
 		vim.keymap.set("n", "<leader>vl", function()
+			print("linting")
 			lint.try_lint()
 		end, { desc = "Trigger linting for current file" })
 	end,

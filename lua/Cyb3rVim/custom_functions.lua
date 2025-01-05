@@ -6,3 +6,11 @@ gdshader = function()
 		capabilities = vim.lsp.protocol.make_client_capabilities(),
 	})
 end
+
+Formatb = function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = true,
+		timeout_ms = 500,
+	})
+end

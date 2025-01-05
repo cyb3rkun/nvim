@@ -32,7 +32,7 @@ return {
 					config = {
 						workspaces = {
 							FullNvimCourse = "/run/media/cyb3rkun/NTFS/CYB3RKUN/FullNvimCourse",
-							AnimeList = "/run/media/cyb3rkun/NTFS/vokun/AnimeList",
+							AnimeList = "/run/media/cyb3rkun/NTFS/vokun/AnimeList/neorg-transposed",
 						},
 						default_workspace = "FullNvimCourse",
 						notes = "~/notes",
@@ -44,6 +44,7 @@ return {
 					default_keybinds = true,
 				},
 			},
+			vim.keymap.set("n", "<localleader>ii", "<CMD>Neorg index<CR>")
 		})
 	end,
 }

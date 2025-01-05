@@ -21,11 +21,12 @@ return {
 			},
 
 			-- NOTE: this will cause it to format a file when you save
-			format_on_save = {
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 500,
-			},
+
+			-- format_on_save = {
+			-- 	lsp_fallback = true,
+			-- 	async = false,
+			-- 	timeout_ms = 500,
+			-- },
 		})
 
 		-- NOTE: here we set a keybind to format manually

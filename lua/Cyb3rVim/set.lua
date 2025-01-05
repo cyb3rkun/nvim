@@ -15,7 +15,7 @@ vim.opt.colorcolumn = "72"
 -- %=%{v:relnum? before? v:relnum after? v:lnum currentline = realnum}
 -- WARN: vim.opt.relativenumber has to be set to true or
 -- relative line numbers won't update"
-vim.opt.statuscolumn = "%s%=%{v:lnum}:%=%{v:relnum?v:relnum:v:lnum} "
+vim.opt.statuscolumn = " %s%{v:relnum?v:relnum:v:lnum} "
 
 -- NOTE: set tab and indentation options tab width = 6
 vim.opt.tabstop = 6
@@ -26,7 +26,7 @@ vim.opt.shiftwidth = 6
 vim.opt.expandtab = false
 
 vim.opt.breakindent = true
-vim.opt.smartindent = false
+vim.opt.smartindent = true
 -- NOTE: do not wrap lines if they pass the column width
 vim.opt.wrap = false
 

@@ -2,4 +2,4 @@
 require("Cyb3rVim.remap")
 require("Cyb3rVim.set")
 require("Cyb3rVim.auto_cmd")
--- require("Cyb3rVim.custom_functions")
+require("Cyb3rVim.custom_functions")

@@ -68,3 +68,28 @@ autocmd({ "VimEnter", "DirChanged" }, {
 		end
 	end,
 })
+
+vim.api.nvim_create_augroup("gdscript_keymaps", { clear = true })
+autocmd({ "FileType" }, {
+	group = "gdscript_keymaps",
+	pattern = "gdscript",
+	callback = function()
+		vim.keymap.set("i", "<CR>", function()
+			local line = vim.api.nvim_get_current_line()
+			if line:match(":%s*$") then
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR><Tab>", true, true, true), "n", false)
+			else
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, true, true), "n", false)
+			end
+		end, { buffer = true })
+		-- vim.keymap.set("n", "o", function()
+		-- 	local line = vim.api.nvim_get_current_line()
+		-- 	if line:match(":%s*$") then
+		-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("o<Tab>", true, true, true), "n", false)
+		-- 	else
+		-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("o", true, true, true), "n", false)
+		-- 	end
+		-- end, { buffer = true })
+		print("It's working")
+	end,
+})

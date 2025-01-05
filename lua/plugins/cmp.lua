@@ -58,7 +58,7 @@ return {
 				["<C-j>"] = cmp.mapping.select_next_item(),
 
 				-- NOTE: press CTRL+y to confirm the selection
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-y>"] = cmp.mapping.confirm({ cmp.ConfirmBehavior.Replace, select = true }),
 
 				-- NOTE: use CTRL+[b/f] to scroll through the documentation of the selected item
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -157,8 +157,11 @@ return {
 		-- NOTE: when selecting an item brackets get autocompleted
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		cmp.event:on("confirm_done", function(event)
+			cmp_autopairs.on_confirm_done(event)
+		end)
 		vim.diagnostic.config({
-			--update_in_insert = true
+			-- update_in_insert = true,
 			float = {
 				focusable = false,
 				style = "default",

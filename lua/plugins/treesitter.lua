@@ -31,6 +31,7 @@ return {
 				"gitignore",
 				"c",
 				"css",
+				"regex",
 			},
 
 			highlight = {
