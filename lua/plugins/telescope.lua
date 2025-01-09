@@ -47,6 +47,7 @@ return {
 			{
 				";b",
 				function()
+
 					local builtin = require("telescope.builtin")
 					builtin.buffers()
 				end,
@@ -180,7 +181,7 @@ return {
 					layout_config = {
 						prompt_position = "bottom",
 						width = 0.7,
-						preview_width = 0.65,
+						-- preview_width = 0.65,
 					},
 					mappings = {
 						i = {
@@ -189,6 +190,8 @@ return {
 
 							-- NOTE: this mapping is commented out because I still don't completely understand qfl and this will change when I do
 							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, --add item to quick fix list and open the quick fix list
+							["<C-b>"] = actions.preview_scrolling_up,
+							["<C-f>"] = actions.preview_scrolling_down,
 						},
 					},
 				},
@@ -204,14 +207,15 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function()
-			require("telescope").setup({
+			local telescope = require("telescope")
+			telescope.setup({
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
 					},
 				},
 			})
-			require("telescope").load_extension("ui-select")
+			telescope.load_extension("ui-select")
 		end,
 	},
 }

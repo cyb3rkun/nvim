@@ -1,7 +1,10 @@
 -- DESCRIPTION: set vim options in this file
 
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.mouse = "a" --Mouse Support
+
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.local/state/nvim/undo/")
 
 vim.opt.number = true
 vim.opt.relativenumber = true

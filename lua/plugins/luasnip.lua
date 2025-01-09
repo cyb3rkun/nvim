@@ -7,24 +7,18 @@ return {
 		local insert = ls.insert_node
 		local choice = ls.choice_node
 		local func = ls.function_node
-		local dynamic = ls.dynamic_node
-		local snippet_n = ls.snippet_node
 		local extras = require("luasnip.extras")
-		local rep = extras.rep
 		local fmt = require("luasnip.extras.fmt").fmt
 
 		vim.keymap.set({ "i", "s" }, "<A-k>", function()
-			-- if ls.expand_or_jumpable() then
-			-- 	ls.expand_or_jump()
-			-- end
-			if ls.jumpable(1) then
-				ls.jump(1)
+			if ls.jumpable(-1) then
+				ls.jump(-1)
 			end
 		end, { silent = true, desc = "Jump to the next insert node" })
 
 		vim.keymap.set({ "i", "s" }, "<A-j>", function()
-			if ls.jumpable(-1) then
-				ls.jump(-1)
+			if ls.jumpable(1) then
+				ls.jump(1)
 			end
 		end, { silent = true, desc = "Jump to the prev insert node" })
 
@@ -97,7 +91,7 @@ return {
 				insert(3, "void"),
 				text({ ":", "\t" }),
 				insert(4),
-				text({"", "\t"}),
+				text({ "", "\t" }),
 				insert(5, "return"),
 			}),
 			snippet("var", {
@@ -127,6 +121,15 @@ return {
 				insert(1, "name"),
 				text(": "),
 				insert(2, "void "),
+			}),
+		})
+		ls.add_snippets("typescript", {
+			snippet("import", {
+				text("import { "),
+				insert(2, "ModuleName"),
+				text(" } from \""),
+				insert(1, "Path"),
+				text('";'),
 			}),
 		})
 	end,

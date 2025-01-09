@@ -1,29 +1,14 @@
 -- NOTE: this makes it easier and more concise to define autocmds
 local autocmd = vim.api.nvim_create_autocmd
 
--- NOTE: Create a highlight group called YankHighlight to use for yanking.
--- guifg defines the foreground color wich will be used for the text color
--- guibg defines the background color which will be used for the text highlight
--- NOTE: this is the same as running highlight in cmd
--- NOTE: with this configuration the text will appear black and the
--- highlight will be cyan/aqua (I like it to be that bright but change
--- if you want it to be a different color)
 vim.cmd("highlight YankHighlight guifg=#000000 guibg=#00FFFF")
 
--- NOTE: we define an autocmd that runs on the event [TextYankPost]
 autocmd("TextYankPost", {
-	-- NOTE: we give it a description
 	desc = "Highlight when yanking text",
 
-	-- NOTE: we add it to a group. this prevents overwriting other autocmd
-	-- commands
 	group = vim.api.nvim_create_augroup("Cyb3rVim-highlight-yank", { clear = true }),
 
-	-- NOTE: we define the function we want to run when the event is triggered
 	callback = function()
-		-- NOTE: we call the highlight.on_yank() function and pass it the
-		-- highlight group we want to use
-		-- we defined the highlight group and the desired colors above
 		vim.highlight.on_yank({ higroup = "YankHighlight" })
 	end,
 })
@@ -37,10 +22,6 @@ autocmd("BufEnter", {
 	end,
 })
 
--- NOTE: This Autocmd will automatically run when the current working
--- directory is changed to check for a project.godot file and if there
--- is one it will start the server for godot dap, and lsp automagically.
--- <leader>sg keymap to launch the server manually
 local server_started
 autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
@@ -82,14 +63,26 @@ autocmd({ "FileType" }, {
 				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<CR>", true, true, true), "n", false)
 			end
 		end, { buffer = true })
-		-- vim.keymap.set("n", "o", function()
-		-- 	local line = vim.api.nvim_get_current_line()
-		-- 	if line:match(":%s*$") then
-		-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("o<Tab>", true, true, true), "n", false)
-		-- 	else
-		-- 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("o", true, true, true), "n", false)
-		-- 	end
-		-- end, { buffer = true })
-		print("It's working")
+	end,
+})
+autocmd({ "BufEnter", "BufWinEnter", "BufWinLeave" }, {
+	callback = function()
+		if vim.bo.filetype == "undotree" then
+			print("resize window")
+			local max_width = 30
+			local win_width = vim.fn.winwidth(0)
+			vim.cmd("vertical resize " .. math.min(max_width, win_width))
+		end
+	end,
+})
+autocmd({ "BufEnter", "FileType" }, {
+	pattern = "html",
+	callback = function()
+		vim.keymap.set("n", "<LocalLeader>x", function()
+			print("opening in browser")
+			vim.ui.open(vim.fn.expand("%"))
+		end, {
+			desc = " Open File In Browser",
+		})
 	end,
 })

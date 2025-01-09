@@ -32,6 +32,7 @@ return {
 				"c",
 				"css",
 				"regex",
+				"norg"
 			},
 
 			highlight = {

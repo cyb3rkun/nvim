@@ -110,7 +110,7 @@ return {
 				{ name = "luasnip" }, -- NOTE: The second source is luasnip
 				{ name = "path" }, -- NOTE: after those we will get file paths
 				{ name = "buffer" }, -- NOTE: this will allow snippets of text that is already in the current buffer to be used as a completion source
-				{ name = "gdscript" }, -- NOTE: completions for gdscript
+				-- { name = "gdscript" }, -- NOTE: completions for gdscript
 			},
 
 			-- NOTE: here we define the format that completions shoudl be shown insert

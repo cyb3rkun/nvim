@@ -18,7 +18,12 @@ return {
 				clang = { "clang-format" }, -- NOTE: clang-format for c cpp and others
 				gdscript = { "gdformat" }, -- NOTE: gdformat for gdscript
 				csharp = { "clang-format" },
-			},
+				css = { "biome" },
+				json = { "biome" },
+				javascript = { "biome" },
+				typescript = { "biome" },
+				html = { "prettierd" }
+			}
 
 			-- NOTE: this will cause it to format a file
 			-- when you save

@@ -13,16 +13,28 @@ local keymap = vim.keymap.set
 -- NOTE: Define a keymaps variable to store our keymaps as a function
 local keymaps = function(client, bufnr)
 	-- NOTE: rename references throughout an entire file?
-	keymap("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "[R]e[n]ame" })
+	keymap("n", "<leader>rn", vim.lsp.buf.rename, {
+		buffer = bufnr,
+		desc = "[R]e[n]ame",
+	})
 
 	-- NOTE: Keymap to get code actions
-	keymap("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "[C]ode [A]ction" })
+	keymap("n", "<leader>ca", vim.lsp.buf.code_action, {
+		buffer = bufnr,
+		desc = "[C]ode [A]ction",
+	})
 
 	-- NOTE: Keymap to go to definition
-	keymap("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "[G]oto [D]efinition" })
+	keymap("n", "<leader>gd", vim.lsp.buf.definition, {
+		buffer = bufnr,
+		desc = "[G]oto [D]efinition",
+	})
 
 	-- NOTE: Keymap to go to Declaration
-	keymap("n", "<leader>gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "[G]oto [D]eclaration" })
+	keymap("n", "<leader>gD", vim.lsp.buf.declaration, {
+		buffer = bufnr,
+		desc = "[G]oto [D]eclaration",
+	})
 
 	-- NOTE: Keymap to go to references
 	keymap(
@@ -33,10 +45,16 @@ local keymaps = function(client, bufnr)
 	)
 
 	-- NOTE: keymap to go to implementation
-	keymap("n", "<leader>gI", vim.lsp.buf.implementation, { buffer = bufnr, desc = "[G]oto [I]mplementation" })
+	keymap("n", "<leader>gI", vim.lsp.buf.implementation, {
+		buffer = bufnr,
+		desc = "[G]oto [I]mplementation",
+	})
 
 	-- NOTE: find Type definition
-	keymap("n", "<leader>D", vim.lsp.buf.type_definition, { buffer = bufnr, desc = "Type [D]efinition" })
+	keymap("n", "<leader>D", vim.lsp.buf.type_definition, {
+		buffer = bufnr,
+		desc = "Type [D]efinition",
+	})
 
 	-- NOTE: show lsp document symbols in telescope UI
 	keymap(
@@ -73,19 +91,39 @@ local keymaps = function(client, bufnr)
 	-- NOTE: List workspace folders
 	keymap("n", "<leader>wlf", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, { buffer = bufnr, desc = "[W]orkspace [L]ist [F]olders" })
+	end, {
+		buffer = bufnr,
+		desc = "[W]orkspace [L]ist [F]olders",
+	})
 
 	-- See `:help K` for why this keymap
 	-- NOTE: show documentation for what is currently under the cursor
-	keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover Documentation" })
+	keymap("n", "K", vim.lsp.buf.hover, {
+		buffer = bufnr,
+		desc = "Hover Documentation",
+	})
 
 	-- NOTE: show signature help for what is currently under the cursor
-	keymap("n", "<leader>k", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "Signature Documentation" })
+	keymap("n", "<leader>k", vim.lsp.buf.signature_help, {
+		buffer = bufnr,
+		desc = "Signature Documentation",
+	})
 
-	keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-	keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-	keymap("n", "<leader>t", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-	keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+	keymap("n", "[d", vim.diagnostic.goto_prev, {
+		desc = "Go to previous [D]iagnostic message",
+	})
+
+	keymap("n", "]d", vim.diagnostic.goto_next, {
+		desc = "Go to next [D]iagnostic message",
+	})
+
+	keymap("n", "<leader>t", vim.diagnostic.open_float, {
+		desc = "Show diagnostic [E]rror messages",
+	})
+
+	keymap("n", "<leader>q", vim.diagnostic.setloclist, {
+		desc = "Open diagnostic [Q]uickfix list",
+	})
 end
 
 -- NOTE: return the keymaps variabl function when this file is called

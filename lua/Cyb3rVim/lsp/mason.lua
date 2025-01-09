@@ -41,8 +41,8 @@ return {
 				"clang-format", -- NOTE: Formatter for C C++ OBJC OBJC++ and more
 				"stylua", -- NOTE: Formatter for Lua
 				--NOTE: gd_lint gdscript gdformat GDScript all fail to be acquired automatically
-				--"gdformat",  BUG: Formatter for gdscript can't seem to find the right name to call it by
-				"prettier", -- NOTE: For:matter for css html and other web languages?
+				"gdtoolkit",
+				"prettierd", -- NOTE: Formatter for css html and other web languages?
 			},
 		})
 	end,

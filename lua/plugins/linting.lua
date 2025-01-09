@@ -7,6 +7,7 @@ return {
 	config = function()
 		-- NOTE: Linting Languages
 		local lint = require("lint")
+
 		lint.linters_by_ft = {
 			-- NOTE: Specify Languages here
 			clang = { "cpplint" },
