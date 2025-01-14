@@ -32,7 +32,7 @@ return {
 		local opts = { noremap = true, silent = true }
 
 		local lsp_attach = function(client, bufnr)
-			-- opts.buffer = bufnr
+			opts.buffer = bufnr
 
 			-- NOTE:  keymaps are defined in lsp_keymaps
 			local keymaps = require("Cyb3rVim.lsp.lsp_keymaps")
@@ -71,13 +71,26 @@ return {
 			"eslint",
 			"biome", -- For JS, TS and other web languages
 		}
+
 		-- NOTE: Basic LSP setup
-		for index, ls in ipairs(servers) do
+		for _, ls in ipairs(servers) do
 			lsp[ls].setup({
 				capabilities = capabilities,
 				on_attach = lsp_attach,
 			})
 		end
+
+		lsp.rust_analyzer.setup({
+			on_attach = lsp_attach,
+			capabilities = capabilities,
+			filetypes = { "rust" },
+			root_dir = lsp.util.root_pattern("Cargo.toml"),
+			settings = {
+				cargo = {
+					allFeatures = true,
+				},
+			},
+		})
 
 		-- NOTE: Advanced LSP setups
 		lsp.gdshader_lsp.setup({

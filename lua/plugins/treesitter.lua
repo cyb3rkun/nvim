@@ -32,7 +32,8 @@ return {
 				"c",
 				"css",
 				"regex",
-				"norg"
+				"norg",
+				"rust"
 			},
 
 			highlight = {
@@ -42,6 +43,7 @@ return {
 
 			indent = {
 				enable = true,
+				-- disable = true,
 			},
 
 			autotag = {

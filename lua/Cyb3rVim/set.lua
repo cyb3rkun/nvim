@@ -29,7 +29,7 @@ vim.opt.shiftwidth = 6
 vim.opt.expandtab = false
 
 vim.opt.breakindent = true
-vim.opt.smartindent = true
+vim.opt.smartindent = false
 -- NOTE: do not wrap lines if they pass the column width
 vim.opt.wrap = false
 
@@ -46,3 +46,4 @@ vim.opt.scrolloff = 15
 
 -- NOTE: Highlight the current line
 vim.opt.cursorline = true
+vim.g.rust_recommended_style=0

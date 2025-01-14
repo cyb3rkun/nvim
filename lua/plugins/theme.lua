@@ -9,41 +9,17 @@ return {
 	priority = 1000,
 	opts = {},
 	config = function()
-		-- local bg = "#011628"
-		-- local bg_dark = "#011423"
-		-- local bg_highlight = "#143652"
-		-- local bg_search = "#0A64AC"
-		-- local bg_sidebar = "#0d3b5e"
-		-- local bg_visual = "#275378"
-		-- local fg = "#CBE0F0"
-		-- local fg_dark = "#B4D0E9"
-		-- local fg_gutter = "#627E97"
-		-- local border = "#547998"
-
-		-- this is a comment that's supposed to be italic
-		--[[ require("kanagawa").setup({
-			undercurl = true,
-			CommentStyle = { italic = true },
-			functionStyle = { bold = true, italic = true },
-			keywordStyle = { bold = true, italic = false },
-			terminalColors = true,
-
-			theme = "wave",
-			colors = {
-				palette = {},
-			},
-		}) ]]
-
 		require("tokyonight").setup({
-			style = "storm",
+			-- transparent = true,
+			style = "moon",
 			terminal_colors = true,
 			styles = {
 				comments = { italic = true },
 				keywords = { bold = true, italic = false },
-				functions = { bold = true, italic = false },
+				functions = { bold = true, italic = true },
 				variables = { bold = false, italic = true },
-				sidebars = "dark",
-				floats = "dark",
+				sidebars = "transparent",
+				floats = "transparent",
 			},
 			cache = true,
 		})
@@ -51,5 +27,13 @@ return {
 		vim.o.termguicolors = true
 		-- vim.opt.termguicolors = true
 		vim.cmd("colorscheme tokyonight-storm")
+
+		-- vim.cmd([[
+		-- 	  highlight Normal guibg=#000FF09
+		-- 	  highlight NonText guibg=none
+		--   highlight Normal ctermbg=none
+		-- 	  highlight NonText ctermbg=none
+		-- ]])
+		--
 	end,
 }

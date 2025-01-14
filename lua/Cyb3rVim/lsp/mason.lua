@@ -43,6 +43,7 @@ return {
 				--NOTE: gd_lint gdscript gdformat GDScript all fail to be acquired automatically
 				"gdtoolkit",
 				"prettierd", -- NOTE: Formatter for css html and other web languages?
+				-- "rust-analyzer",
 			},
 		})
 	end,

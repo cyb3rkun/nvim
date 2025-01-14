@@ -22,7 +22,8 @@ return {
 				json = { "biome" },
 				javascript = { "biome" },
 				typescript = { "biome" },
-				html = { "prettierd" }
+				html = { "prettierd" },
+				rust = {"rustfmt"}
 			}
 
 			-- NOTE: this will cause it to format a file
@@ -42,7 +43,7 @@ return {
 			function() -- NOTE: the keymap works in n and v modes and is <leader>mp
 				-- NOTE: here we call the format function from conform and pass it our formatting options
 				conform.format({
-					lsp_fallback = true,
+					lsp_fallback = false,
 					async = true,
 					timeout_ms = 500,
 				})

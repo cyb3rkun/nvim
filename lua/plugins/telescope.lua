@@ -13,8 +13,7 @@ return {
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make",
-			}, -- NOTE: this plugin is supposed to improve performance
-			-- "nvim-tree/nvim-web-devicons",
+			},
 		},
 		keys = {
 			{
@@ -47,7 +46,6 @@ return {
 			{
 				";b",
 				function()
-
 					local builtin = require("telescope.builtin")
 					builtin.buffers()
 				end,
@@ -76,6 +74,20 @@ return {
 					builtin.treesitter()
 				end,
 				desc = "List Treesitter objects",
+			},
+			{
+				";ws",
+				function ()
+					local builtin = require("telescope.builtin")
+					builtin.lsp_workspace_symbols()
+				end
+			},
+			{
+				";wds",
+				function ()
+					local builtin = require("telescope.builtin")
+					builtin.lsp_dynamic_workspace_symbols()
+				end
 			},
 			{
 				";sf",
@@ -117,7 +129,7 @@ return {
 							anchor = "E",
 							horizontal = {},
 							width = 0.72,
-							height = 0.5,
+							feight = 0.5,
 							preview_width = 0.65,
 							prompt_position = "top",
 						},
@@ -128,7 +140,7 @@ return {
 			{
 				";st",
 				"<CMD>TodoTelescope<cr>",
-				desc = "Telescope Todo Comments"
+				desc = "Telescope Todo Comments",
 			},
 		},
 		config = function(_, opts)
