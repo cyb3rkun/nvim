@@ -135,7 +135,7 @@ return {
 							anchor = "E",
 							horizontal = {},
 							width = 0.72,
-							feight = 0.5,
+							height = 0.5,
 							preview_width = 0.65,
 							prompt_position = "top",
 						},
