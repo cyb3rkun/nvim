@@ -1,4 +1,6 @@
 -- DESCRIPTION: set vim options in this file
+vim.g.mapleader = " "
+vim.g.maplocalleader = "."
 
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.mouse = "a" --Mouse Support

@@ -25,7 +25,7 @@ return {
 				position = "right",
 				width = 30,
 				mappings = {
-					["y"] = function(state)
+					["c"] = function(state)
 						local node = state.tree:get_node()
 						local filepath = node:get_id()
 						local filename = node.name

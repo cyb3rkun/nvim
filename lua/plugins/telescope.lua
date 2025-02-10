@@ -16,88 +16,6 @@ return {
 			{
 				";f",
 				function()
-					local builtin = require("telescope.builtin")
-					builtin.find_files({
-						no_ignore = false,
-						hidden = true,
-					})
-				end,
-				desc = "Lists files in your current working directory, respects .gitignore",
-			},
-			{
-				";r",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.oldfiles()
-				end,
-				desc = "Telescope Recent Files",
-			},
-			{
-				";ss",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.live_grep()
-				end,
-				desc = "Telescope Live Grep with Preview",
-			},
-			{
-				";#",
-				function ()
-					local builtin = require("telescope.builtin")
-					local word = vim.fn.expand("<cword>")
-					builtin.grep_string({ search = word})
-				end
-
-			},
-			{
-				";b",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.buffers()
-				end,
-				desc = "List Open Buffers",
-			},
-			{
-				";;",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.resume()
-				end,
-				desc = "Resume the previous telescope picker",
-			},
-			{
-				";e",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.diagnostics()
-				end,
-				desc = "List Diagnostics for all open buffers or a specific buffer",
-			},
-			{
-				";t",
-				function()
-					local builtin = require("telescope.builtin")
-					builtin.treesitter()
-				end,
-				desc = "List Treesitter objects",
-			},
-			{
-				";ws",
-				function ()
-					local builtin = require("telescope.builtin")
-					builtin.lsp_workspace_symbols()
-				end
-			},
-			{
-				";wds",
-				function ()
-					local builtin = require("telescope.builtin")
-					builtin.lsp_dynamic_workspace_symbols()
-				end
-			},
-			{
-				";sf",
-				function()
 					local telescope = require("telescope")
 					local function telescope_buffer_dir()
 						return vim.fn.expand("%:p:h")
@@ -107,20 +25,108 @@ return {
 						path = "%:p:h",
 						cwd = telescope_buffer_dir(),
 						respect_gitignore = false,
-						hidden = true,
+						hidden = false,
 						grouped = true,
-						previewer = false,
+						previewer = true,
 						initial_mode = "normal",
-						layout_config = { height = 40 },
+						layout_config = {
+							height = 40,
+							preview_width = 20,
+						},
 					})
 				end,
 				desc = "Open File Browser with the path of the current buffer",
 			},
 			{
+				";r",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.oldfiles({ initial_mode = "normal" })
+				end,
+				desc = "Telescope Recent Files",
+			},
+			{
+				";ss",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.live_grep({})
+				end,
+				desc = "Telescope Live Grep with Preview",
+			},
+			{
+				";#",
+				function()
+					local builtin = require("telescope.builtin")
+					local word = vim.fn.expand("<cword>")
+					builtin.grep_string({
+						initial_mode = "normal",
+						search = word,
+					})
+				end,
+			},
+			{
+				";b",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.buffers({ initial_mode = "normal" })
+				end,
+				desc = "List Open Buffers",
+			},
+			{
+				";;",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.resume({ initial_mode = "normal" })
+				end,
+				desc = "Resume the previous telescope picker",
+			},
+			{
+				";e",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.diagnostics({ initial_mode = "normal" })
+				end,
+				desc = "List Diagnostics for all open buffers or a specific buffer",
+			},
+			{
+				";t",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.treesitter({ initial_mode = "normal" })
+				end,
+				desc = "List Treesitter objects",
+			},
+			{
+				";ws",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.lsp_workspace_symbols({ initial_mode = "normal" })
+				end,
+			},
+			{
+				";wds",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.lsp_dynamic_workspace_symbols({ initial_mode = "normal" })
+				end,
+			},
+			{
+				";sf",
+				function()
+					local builtin = require("telescope.builtin")
+					builtin.find_files({
+						-- initial_mode = "normal",
+						no_ignore = false,
+						hidden = true,
+					})
+				end,
+				desc = "Lists files in your current working directory, respects .gitignore",
+			},
+			{
 				";sh",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.help_tags()
+					builtin.help_tags({ initial_mode = "normal" })
 				end,
 				desc = "Telescope Help Tags",
 			},
@@ -145,12 +151,11 @@ return {
 			},
 			{
 				";sx",
-				function ()
-				local builtin = require("telescope.builtin")
-				-- local  = require("telescope.builtin")
-					builtin.quickfix()
-				end
-
+				function()
+					local builtin = require("telescope.builtin")
+					-- local  = require("telescope.builtin")
+					builtin.quickfix({ initial_mode = "normal" })
+				end,
 			},
 			{
 				";st",

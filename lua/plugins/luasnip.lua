@@ -1,21 +1,20 @@
 return {
 	"L3MON4d3/LuaSnip",
 	lazy = true,
-	dependencies = {
-		"rafamadriz/friendly-snippets",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-			require("luasnip.loaders.from_vscode") .lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-		end,
-	},
+	-- dependencies = { "rafamadriz/friendly-snippets" },
+
+	---@diagnostic disable-next-line: unused-local
 	opts = function(_, opts)
+		-- require("luasnip.loaders.from_vscode").lazy_load()
+		-- require("luasnip.loaders.from_vscode").load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+
 		local ls = require("luasnip")
 		local snippet = ls.snippet
 		local text = ls.text_node
 		local insert = ls.insert_node
 		local choice = ls.choice_node
 		local func = ls.function_node
-		local extras = require("luasnip.extras")
+		-- local extras = require("luasnip.extras")
 		local fmt = require("luasnip.extras.fmt").fmt
 
 		vim.keymap.set({ "i", "s" }, "<A-k>", function()
@@ -35,22 +34,61 @@ return {
 				ls.change_choice(1)
 			end
 		end)
+		vim.keymap.set({ "i", "s" }, "<A-p>", function()
+			if ls.choice_active() then
+				ls.change_choice(-1)
+			end
+		end)
 
-		-- NOTE: This is an example snippet
 		ls.add_snippets("lua", {
-			snippet("hello", {
+			snippet({
+
+				trig = "hello",
+				desc = "Prints Hello to the console",
+			}, {
 				text('print("hello '), -- Write "print("hello
 				insert(1), -- Insert the cursor after hello
 				text('world")'), -- then write "world)"
 				insert(2),
 			}),
-			snippet("ret", {
+			-- NOTE: Play around with this one
+			snippet({
+
+				trig = "date",
+				desc = "Date In different formats",
+			}, {
+				choice(1, {
+					func(function()
+						return os.date("%d %b %Y")
+					end),
+					func(function()
+						return os.date("[%e %b %Y]")
+					end),
+					func(function()
+						return os.date("%a %b %d %Y")
+					end),
+					func(function()
+						return os.date("%e %m %y")
+					end),
+					func(function()
+						return os.date("%e-%m-%y")
+					end),
+				}),
+				insert(2),
+			}),
+			snippet({
+				trig = "ret",
+				desc = "",
+			}, {
 				text({ "return {", "\t" }),
 				insert(1),
 				text({ "", "}" }),
 				insert(2),
 			}),
-			snippet("if", {
+			snippet({
+				trig = "if",
+				desc = "",
+			}, {
 				text("if "),
 				insert(1, "true"),
 				text(" then "),
@@ -59,7 +97,10 @@ return {
 				insert(3),
 			}),
 			snippet(
-				"logc",
+				{
+					trig = "logc",
+					desc = "",
+				},
 				fmt([[Debug.LOG($"<color={}>{}</color>");]], {
 					choice(1, {
 						text("red"),
@@ -71,14 +112,20 @@ return {
 					insert(2),
 				})
 			),
-			snippet("example", {
+			snippet({
+				trig = "example",
+				desc = "",
+			}, {
 				-- use a lua function to get
 				-- the snippet string
 				func(function()
 					return "HELLO!"
 				end),
 			}),
-			snippet("co", {
+			snippet({
+				trig = "co",
+				desc = "",
+			}, {
 				func(function()
 					local register_data = vim.fn.getreg() .. ""
 					if string.match(register_data, "[%d-]+,%s*[%d-]+") then
@@ -90,7 +137,10 @@ return {
 			}),
 		})
 		ls.add_snippets("gdscript", {
-			snippet("func", {
+			snippet({
+				trig = "func",
+				desc = "",
+			}, {
 				-- text('func method() -> '),
 				text("func "),
 				insert(1, "function_name"),
@@ -105,7 +155,10 @@ return {
 				insert(5, "return"),
 				insert(6),
 			}),
-			snippet("var", {
+			snippet({
+				trig = "var",
+				desc = "",
+			}, {
 				text("var "),
 				insert(1, "name"),
 				text(": "),
@@ -114,14 +167,20 @@ return {
 				insert(3, "value"),
 				insert(4),
 			}),
-			snippet("var", {
+			snippet({
+				trig = "var",
+				desc = "",
+			}, {
 				text("var "),
 				insert(1, "name"),
 				text(": "),
 				insert(2, "void"),
 				insert(3),
 			}),
-			snippet("@expo", {
+			snippet({
+				trig = "@expo",
+				desc = "",
+			}, {
 				text("@export var "),
 				insert(1, "name"),
 				text(": "),
@@ -130,7 +189,10 @@ return {
 				insert(3, "value"),
 				insert(4),
 			}),
-			snippet("@expo", {
+			snippet({
+				trig = "@expo",
+				desc = "",
+			}, {
 				text("@export var "),
 				insert(1, "name"),
 				text(": "),
@@ -139,7 +201,10 @@ return {
 			}),
 		})
 		ls.add_snippets("typescript", {
-			snippet("import", {
+			snippet({
+				trig = "import",
+				desc = "",
+			}, {
 				text("import { "),
 				insert(2, "ModuleName"),
 				text(' } from "'),

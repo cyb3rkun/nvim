@@ -38,9 +38,60 @@ return {
 			},
 			snippets = {
 				preset = "luasnip",
-				jump = function(direction)
-					require("luasnip").jump(-direction)
-				end,
+				-- jump = function(direction)
+				-- 	require("luasnip").jump(-direction)
+				-- end,
+			},
+			sources = {
+				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lsp = {
+						name = "lsp",
+						enabled = true,
+						module = "blink.cmp.sources.lsp",
+						-- kind = "LSP",
+						score_offset = 200,
+					},
+					lazydev = {
+						name = "LazyDev",
+						enabled = true,
+						module = "lazydev.integrations.blink",
+						score_offset = 100,
+					},
+					snippets = {
+						name = "Snippets",
+						enabled = true,
+						module = "blink.cmp.sources.snippets",
+						score_offset = 20,
+					},
+				},
+			},
+			completion = {
+				menu = {
+					border = "single",
+					draw = {
+						columns = {
+							{ "source_name", "label", "label_description", gap = 1 },
+							{ "kind_icon" },
+						},
+						gap = 1,
+						treesitter = { "lsp" },
+					},
+				},
+				documentation = {
+					auto_show = true,
+					window = {
+						border = "single",
+					},
+				},
+				accept = {
+					auto_brackets = {
+						enabled = true,
+					},
+				},
+				ghost_text = {
+					enabled = true,
+				},
 			},
 			appearance = {
 				-- use_nvim_cmp_as_default = true,
@@ -81,51 +132,6 @@ return {
 					Warning = "󰏯 ",
 					Information = "󰏮 ",
 					Hint = "󰏭 ",
-				},
-			},
-
-			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-				providers = {
-					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
-						score_offset = 100,
-					},
-					snippets = {
-						name = "Snippets",
-						enabled = true,
-						module = "blink.cmp.sources.snippets",
-						score_offset = 20,
-					},
-				},
-			},
-			signature = { enabled = true },
-			completion = {
-				menu = {
-					border = "single",
-					draw = {
-						columns = {
-							{ "source_name", "label", "label_description", gap = 1 },
-							{ "kind_icon" },
-						},
-						gap = 1,
-						treesitter = { "lsp" },
-					},
-				},
-				documentation = {
-					auto_show = true,
-					window = {
-						border = "single",
-					},
-				},
-				accept = {
-					auto_brackets = {
-						enabled = true,
-					},
-				},
-				ghost_text = {
-					enabled = true,
 				},
 			},
 		},

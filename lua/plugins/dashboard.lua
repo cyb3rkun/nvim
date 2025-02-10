@@ -16,11 +16,6 @@ return {
 		-- NOTE: setup
 		local dashboard = require("alpha.themes.dashboard")
 
-		local time = os.date("%H:%M")
-		local date = os.date("%a %d %b")
-		local v = vim.version()
-		local version = " v" .. v.major .. "." .. v.minor .. "." .. v.patch
-
 		-- CREDIT:
 		-- GITHUB: @cyb3rkun
 		-- REDDIT: @Cyb3r-Kun

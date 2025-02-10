@@ -8,9 +8,8 @@ return {
 		{
 			"williamboman/mason-lspconfig.nvim",
 			dependencies = {
-				"williamboman/mason.nvim"
+				"williamboman/mason.nvim",
 			},
-
 		},
 		{
 			-- "folke/neodev.nvim",
@@ -34,14 +33,14 @@ return {
 		-- 	vim.lsp.protocol.make_client_capabilities(),
 		-- 	cmp_nvim_lsp.default_capabilities()
 		-- )
----@diagnostic disable-next-line: undefined-global
+		---@diagnostic disable-next-line: undefined-global
 		local capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
----@diagnostic disable-next-line: unused-local
+		---@diagnostic disable-next-line: unused-local
 		local opts = { noremap = true, silent = true }
 
 		local lsp_attach = function(client, bufnr)
----@diagnostic disable-next-line: unused-local
+			---@diagnostic disable-next-line: unused-local
 			opts.buffer = bufnr
 
 			-- NOTE:  keymaps are defined in lsp_keymaps
@@ -74,6 +73,7 @@ return {
 
 		local servers = {
 			"lua_ls",
+			"jdtls",
 			"gdscript",
 			"csharp_ls",
 			"bashls",
@@ -82,7 +82,8 @@ return {
 			"cssls",
 			"eslint",
 			"pylyzer",
-			"biome", -- For JS, TS and other web languages
+			-- "biome", -- For JS, TS and other web languages
+			-- "neorg-interim-ls",
 		}
 
 		-- NOTE: Basic LSP setup
@@ -92,6 +93,12 @@ return {
 				on_attach = lsp_attach,
 			})
 		end
+
+		lsp.biome.setup({
+			on_attach = lsp_attach,
+			capabilities = capabilities,
+			filetypes = { "js", "ts", "json"}
+		})
 
 		lsp.rust_analyzer.setup({
 			on_attach = lsp_attach,
