@@ -5,8 +5,8 @@ return {
 
 	---@diagnostic disable-next-line: unused-local
 	opts = function(_, opts)
-		-- require("luasnip.loaders.from_vscode").lazy_load()
-		-- require("luasnip.loaders.from_vscode").load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
 
 		local ls = require("luasnip")
 		local snippet = ls.snippet
@@ -17,13 +17,13 @@ return {
 		-- local extras = require("luasnip.extras")
 		local fmt = require("luasnip.extras.fmt").fmt
 
-		vim.keymap.set({ "i", "s" }, "<A-k>", function()
+		vim.keymap.set({ "i", "s" }, "<A-j>", function()
 			if ls.jumpable(-1) then
 				ls.jump(-1)
 			end
 		end, { silent = true, desc = "Jump to the next insert node" })
 
-		vim.keymap.set({ "i", "s" }, "<A-j>", function()
+		vim.keymap.set({ "i", "s" }, "<A-k>", function()
 			if ls.jumpable(1) then
 				ls.jump(1)
 			end
@@ -41,16 +41,6 @@ return {
 		end)
 
 		ls.add_snippets("lua", {
-			snippet({
-
-				trig = "hello",
-				desc = "Prints Hello to the console",
-			}, {
-				text('print("hello '), -- Write "print("hello
-				insert(1), -- Insert the cursor after hello
-				text('world")'), -- then write "world)"
-				insert(2),
-			}),
 			-- NOTE: Play around with this one
 			snippet({
 
@@ -65,7 +55,7 @@ return {
 						return os.date("[%e %b %Y]")
 					end),
 					func(function()
-						return os.date("%a %b %d %Y")
+						return os.date("%a, %b %d, %Y")
 					end),
 					func(function()
 						return os.date("%e %m %y")
@@ -78,7 +68,7 @@ return {
 			}),
 			snippet({
 				trig = "ret",
-				desc = "",
+				desc = "return something",
 			}, {
 				text({ "return {", "\t" }),
 				insert(1),
@@ -112,16 +102,6 @@ return {
 					insert(2),
 				})
 			),
-			snippet({
-				trig = "example",
-				desc = "",
-			}, {
-				-- use a lua function to get
-				-- the snippet string
-				func(function()
-					return "HELLO!"
-				end),
-			}),
 			snippet({
 				trig = "co",
 				desc = "",

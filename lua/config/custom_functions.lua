@@ -14,3 +14,6 @@ Formatb = function()
 		timeout_ms = 500,
 	})
 end
+P = function(v)
+	print(vim.inspect(v))
+end

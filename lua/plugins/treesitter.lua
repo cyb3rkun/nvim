@@ -47,9 +47,9 @@ return {
 					-- disable = true,
 				},
 
-				autotag = {
-					enable = true,
-				},
+				-- autotag = {
+				-- 	enable = true,
+				-- },
 
 				incremental_selection = {
 					enable = true,
@@ -64,18 +64,27 @@ return {
 		end,
 	},
 	{
-		"windwp/nvim-ts-autotag",
-		event = "VeryLazy",
+		"nvim-treesitter/nvim-treesitter-context",
+		-- lazy = true,
 		config = function()
-			require("nvim-ts-autotag").setup({
-				opts = {
-					enable_close = true,
-					enable_renable = true,
-					enable_close_on_slash = true,
-				},
+			require("treesitter-context").setup({
+				enable = false,
 			})
 		end,
 	},
+	-- {
+	-- 	"windwp/nvim-ts-autotag",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("nvim-ts-autotag").setup({
+	-- 			opts = {
+	-- 				enable_close = true,
+	-- 				enable_renable = true,
+	-- 				enable_close_on_slash = true,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.ai",
 		version = "*",
@@ -137,13 +146,25 @@ return {
 					}),
 					g = ts_spec({
 						a = { "@comment.outer" },
-						i = { "@comment.inner" }
+						i = { "@comment.inner" },
 						-- there is no comment.inner
 					}),
 					s = ts_spec({
 						a = { "@statement.outer" },
 						i = { "@statement.inner" },
 					}),
+					t = ts_spec({
+						a = { "@type.outer" },
+						i = { "@type.inner" },
+					}),
+					e = ts_spec({
+						a = { "@enum"},
+						i = { "@enum"}
+					}),
+					N = ts_spec({
+						a = {"@name"},
+						i = {"@name"}
+					})
 				},
 				n_lines = 300,
 				search_method = "cover_or_next",
@@ -157,78 +178,10 @@ return {
 		lazy = true,
 		config = function()
 			require("nvim-treesitter.configs").setup({
-		-- 		-- textobjects = {
-		-- 		-- 	select = {
-		-- 		-- 		enable = true,
-		-- 		-- 		-- Automatically jump to next Textobj
-		-- 		-- 		-- lookahead = true,
-		-- 		--
-		-- 		-- 		keymaps = {
-		-- 		-- 			-- ["a="] = {
-		-- 		-- 			-- 	query = "@assignment.outer",
-		-- 		-- 			-- 	desc = "Select Around assignment",
-		-- 		-- 			-- },
-		-- 		-- 			-- ["i="] = {
-		-- 		-- 			-- 	query = "@assignment.inner",
-		-- 		-- 			-- 	desc = "Select Inside assignment",
-		-- 		-- 			-- },
-		-- 		-- 			["L="] = {
-		-- 		-- 				query = "@assignment.lhs",
-		-- 		-- 				desc = "Select left hand side of an assignment",
-		-- 		-- 			},
-		-- 		-- 			["R="] = {
-		-- 		-- 				query = "@assignment.rhs",
-		-- 		-- 				desc = "Select right hand side of an assignment",
-		-- 		-- 			},
-		-- 		--
-		-- 		-- 			-- ["ai"] = {
-		-- 		-- 			-- 	query = "@conditional.outer",
-		-- 		-- 			-- 	desc = "Select Around conditional",
-		-- 		-- 			-- },
-		-- 		-- 			-- ["ii"] = {
-		-- 		-- 			-- 	query = "@conditional.inner",
-		-- 		-- 			-- 	desc = "Select Inside conditional",
-		-- 		-- 			-- },
-		-- 		--
-		-- 		-- 			-- ["af"] = {
-		-- 		-- 			-- 	query = "@call.outer",
-		-- 		-- 			-- 	desc = "Select Around function call",
-		-- 		-- 			-- },
-		-- 		-- 			-- ["if"] = {
-		-- 		-- 			-- 	query = "@call.inner",
-		-- 		-- 			-- 	desc = "Select Inside function call",
-		-- 		-- 			-- },
-		-- 		--
-		-- 		-- 			-- ["am"] = {
-		-- 		-- 			-- 	query = "@function.outer",
-		-- 		-- 			-- 	desc = "Select Around function",
-		-- 		-- 			-- },
-		-- 		-- 			-- ["im"] = {
-		-- 		-- 			-- 	query = "@function.inner",
-		-- 		-- 			-- 	desc = "Select Inside function",
-		-- 		-- 			-- },
-		-- 		--
-		-- 		-- 			-- ["ac"] = {
-		-- 		-- 			-- 	query = "@class.outer",
-		-- 		-- 			-- 	desc = "Select around class",
-		-- 		-- 			-- },
-		-- 		-- 			-- ["ic"] = {
-		-- 		-- 			-- 	query = "@class.inner",
-		-- 		-- 			-- 	desc = "Select inside class",
-		-- 		-- 			-- },
-		-- 		--
-		-- 		-- 			-- ["ag"] = {
-		-- 		-- 			-- 	query = "@comment.outer",
-		-- 		-- 			-- 	desc = "Select around comment",
-		-- 		-- 			-- },
-		-- 		--
-		-- 		-- 			-- ["as"] = {
-		-- 		-- 			-- 	query = "@statement.outer",
-		-- 		-- 			-- 	desc = "Select Around Statement",
-		-- 		-- 			-- },
-		-- 				-- },
-		-- 			-- },
-		-- 		-- },
+				custom_textobjects = {
+						["L="] = { "@assignment.lhs"},
+						["R="] = { "@assignment.rhs"}
+				}
 			})
 		end,
 	},

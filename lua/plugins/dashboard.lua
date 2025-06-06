@@ -48,7 +48,6 @@ return {
 		}
 		-- CREDIT:
 		-- GITHUB: @RchrdAriza/NvimOnMy_way
-		-- R/u/: @Deathgasm_69
 		dashboard.section.buttons.val = {
 			dashboard.button("n", "   New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("f", "󰮗   Find file", ":Telescope find_files<CR>"),

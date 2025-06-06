@@ -22,13 +22,14 @@ return {
 					end
 
 					telescope.extensions.file_browser.file_browser({
-						path = "%:p:h",
-						cwd = telescope_buffer_dir(),
+						cwd = vim.fn.getcwd(-1, -1),
+						cwd_to_path = false,
 						respect_gitignore = false,
 						hidden = false,
 						grouped = true,
+						depth = 10,
 						previewer = true,
-						initial_mode = "normal",
+						initial_mode = "insert",
 						layout_config = {
 							height = 40,
 							preview_width = 20,
@@ -41,7 +42,7 @@ return {
 				";r",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.oldfiles({ initial_mode = "normal" })
+					builtin.oldfiles({ initial_mode = "insert" })
 				end,
 				desc = "Telescope Recent Files",
 			},
@@ -59,7 +60,7 @@ return {
 					local builtin = require("telescope.builtin")
 					local word = vim.fn.expand("<cword>")
 					builtin.grep_string({
-						initial_mode = "normal",
+						initial_mode = "insert",
 						search = word,
 					})
 				end,
@@ -68,7 +69,7 @@ return {
 				";b",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.buffers({ initial_mode = "normal" })
+					builtin.buffers({ initial_mode = "insert" })
 				end,
 				desc = "List Open Buffers",
 			},
@@ -76,7 +77,7 @@ return {
 				";;",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.resume({ initial_mode = "normal" })
+					builtin.resume({ initial_mode = "insert" })
 				end,
 				desc = "Resume the previous telescope picker",
 			},
@@ -84,7 +85,7 @@ return {
 				";e",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.diagnostics({ initial_mode = "normal" })
+					builtin.diagnostics({ initial_mode = "insert" })
 				end,
 				desc = "List Diagnostics for all open buffers or a specific buffer",
 			},
@@ -92,7 +93,7 @@ return {
 				";t",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.treesitter({ initial_mode = "normal" })
+					builtin.treesitter({ initial_mode = "insert" })
 				end,
 				desc = "List Treesitter objects",
 			},
@@ -100,14 +101,14 @@ return {
 				";ws",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.lsp_workspace_symbols({ initial_mode = "normal" })
+					builtin.lsp_workspace_symbols({ initial_mode = "insert" })
 				end,
 			},
 			{
 				";wds",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.lsp_dynamic_workspace_symbols({ initial_mode = "normal" })
+					builtin.lsp_dynamic_workspace_symbols({ initial_mode = "insert" })
 				end,
 			},
 			{
@@ -115,7 +116,7 @@ return {
 				function()
 					local builtin = require("telescope.builtin")
 					builtin.find_files({
-						-- initial_mode = "normal",
+						-- initial_mode = "insert",
 						no_ignore = false,
 						hidden = true,
 					})
@@ -126,7 +127,7 @@ return {
 				";sh",
 				function()
 					local builtin = require("telescope.builtin")
-					builtin.help_tags({ initial_mode = "normal" })
+					builtin.help_tags({ initial_mode = "insert" })
 				end,
 				desc = "Telescope Help Tags",
 			},
@@ -136,13 +137,12 @@ return {
 					local builtin = require("telescope.builtin")
 					local themes = require("telescope.themes")
 					builtin.lsp_document_symbols(themes.get_dropdown({
-						layout_strategy = "horizontal",
+						layout_strategy = "vertical",
 						layout_config = {
-							anchor = "E",
-							horizontal = {},
+							-- anchor = "E",
 							width = 0.72,
-							height = 0.5,
-							preview_width = 0.65,
+							height = 0.8,
+							preview_height = 0.50,
 							prompt_position = "top",
 						},
 					}))
@@ -154,7 +154,7 @@ return {
 				function()
 					local builtin = require("telescope.builtin")
 					-- local  = require("telescope.builtin")
-					builtin.quickfix({ initial_mode = "normal" })
+					builtin.quickfix({ initial_mode = "insert" })
 				end,
 			},
 			{
@@ -180,7 +180,7 @@ return {
 			})
 			opts.pickers = {
 				diagnostics = {
-					initial_mode = "normal",
+					initial_mode = "insert",
 					layout_config = {
 						preview_cutoff = 9999,
 					},
@@ -189,6 +189,7 @@ return {
 			opts.extensions = {
 				file_browser = "dropdown",
 				hijack_netrw = true,
+				cwd = vim.fn.getcwd(),
 				mappings = {
 					["n"] = {
 						["N"] = fb_actions.create,

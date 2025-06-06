@@ -23,7 +23,7 @@ return {
 			use_libuv_file_watcher = true,
 			window = {
 				position = "right",
-				width = 30,
+				width = 25,
 				mappings = {
 					["c"] = function(state)
 						local node = state.tree:get_node()
@@ -47,12 +47,12 @@ return {
 							"4. Filename: " .. results[4],
 							"5. Filename without extension: " .. results[5],
 							"6. Extension of the filename: " .. results[6],
-						}, { prompt = "Choose to copy to clipboard:" }, function(choice)
+						}, { prompt = "Choose to copy to clipboard" }, function(choice)
 							if choice then
 								local i = tonumber(choice:sub(1, 1))
 								local result = results[i]
 								vim.fn.setreg('"', result)
-								vim.notify("Copied: " .. result)
+								-- vim.notify("Copied: " .. result)
 							end
 						end)
 					end,
@@ -62,6 +62,5 @@ return {
 
 		-- NOTE: Keymaps defined here:
 		vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle<CR>")
-		vim.keymap.set("n", "<leader>l", "<cmd>Neotree focus<CR>")
 	end,
 }

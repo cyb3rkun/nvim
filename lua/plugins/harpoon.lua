@@ -8,11 +8,18 @@ return {
 	config = function()
 		local harpoon = require("harpoon")
 		harpoon:setup({})
+		local Path = require('plenary').path
 
 		local function toggle_telescope(harpoon_files)
-			local get_finder = function()
+			local cb_idx = 1
+			local cb_path = Path:new(vim.api.nvim_buf_get_name(0)):make_relative()
+
+			local finder = function()
 				local file_paths = {}
-				for _, item in ipairs(harpoon_files.items) do
+				for idx, item in ipairs(harpoon_files.items) do
+					if cb_path == Path:new(item.value):make_relative() then
+						cb_idx = idx
+					end
 					table.insert(file_paths, item.value)
 				end
 				return require("telescope.finders").new_table({
@@ -24,11 +31,12 @@ return {
 			require("telescope.pickers")
 				.new({}, {
 					prompt_title = "Harpoon",
-					finder = get_finder(),
+					finder = finder(),
 					-- previewer = require("telescope.config").generic_previewer({}),
 					sorter = conf.generic_sorter({}),
 					-- previewer = true,
 					previewer = conf.file_previewer({}),
+					default_selection_index = cb_idx,
 
 					initial_mode = "normal",
 
@@ -69,9 +77,6 @@ return {
 			harpoon:list():add()
 		end)
 
-		-- keymap("n", "<C-a>", function()
-		-- 	harpoon.ui:toggle_quick_menu(harpoon:list())
-		-- end)
 		keymap("n", "<leader>1", function()
 			harpoon:list():select(1)
 		end, { desc = "Go to first harpoon hook" })
@@ -84,5 +89,20 @@ return {
 		keymap("n", "<leader>4", function()
 			harpoon:list():select(4)
 		end, { desc = "Go to fourth harpoon hook" })
+		keymap("n", "<leader>5", function()
+			harpoon:list():select(5)
+		end, { desc = "Go to fifth harpoon hook" })
+		keymap("n", "<leader>6", function()
+			harpoon:list():select(6)
+		end, { desc = "Go to sixth harpoon hook" })
+		keymap("n", "<leader>7", function()
+			harpoon:list():select(7)
+		end, { desc = "Go to seventh harpoon hook" })
+		keymap("n", "<leader>8", function()
+			harpoon:list():select(8)
+		end, { desc = "Go to eigtht harpoon hook" })
+		keymap("n", "<leader>9", function()
+			harpoon:list():select(9)
+		end, { desc = "Go to ninth harpoon hook" })
 	end,
 }

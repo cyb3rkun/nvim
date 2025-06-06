@@ -2,14 +2,36 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
+		cmdline = {
+			enabled = true,
+			view = "cmdline_popup",
+			opts = {},
+		},
+		popupmenu = {
+			enabled = false,
+			---@type 'nui'|'cmp'
+			backend = "nui",
+			---@type NoiceItemPopupMenuItemKind|false
+			kind_icons = {},
+
+		},
 		messages = {
 			enabled = true,
-			documentation = false
+			documentation = true,
+			view = "notify",
+			view_error = "notify",
+			view_warn = "notify",
+			view_history = "messages",
+			view_search = "virtualtext",
 		},
 		lsp = {
 			signature = {
+				enabled=true,
 				auto_open = {
-					trigger = false,
+					enabled = true,
+					trigger = true,
+					luasnip = true,
+					throttle = 50,
 				}
 			},
 			override = {
@@ -19,7 +41,7 @@ return {
 			},
 		},
 		presets = {
-			-- bottom_search = true,
+			bottom_search = true,
 			-- command_pallete = true,
 			long_message_to_split = true,
 			inc_rename = false,
@@ -39,3 +61,4 @@ return {
 		},
 	},
 }
+

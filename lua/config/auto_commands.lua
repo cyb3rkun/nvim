@@ -83,9 +83,3 @@ autocmd({ "BufEnter", "FileType" }, {
 		})
 	end,
 })
-autocmd({ "VimEnter" }, {
-	callback = function()
-		local output = vim.fn.system("kitten @set-background-image ~/Pictures/wallpapers/Lady.png &")
-		print(output)
-	end,
-})

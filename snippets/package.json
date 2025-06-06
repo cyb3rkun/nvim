@@ -1,6 +1,6 @@
 {
 	"name": "snippets",
 	"contributes": {
-		"snippets": [{ "language": "lua", "path": "./lua/lua.json" }]
+		"snippets": [{ "language": "lua", "path": "./lua.json" }]
 	}
 }

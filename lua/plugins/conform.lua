@@ -8,10 +8,11 @@ return {
 
 		-- NOTE: here we run the setup function
 		conform.setup({
+			log_level = vim.log.levels.DEBUG,
 			-- NOTE: here we define which formatters we want to use
 			formatters_by_ft = {
 				lua = { "stylua" }, -- NOTE: stylua for lua formatting
-				clang = { "clang-format" }, -- NOTE: clang-format for c cpp and others
+				c = { "clang-format" }, -- NOTE: clang-format for c cpp and others
 				gdscript = { "gdformat" }, -- NOTE: gdformat for gdscript
 				csharp = { "clang-format" },
 				css = { "biome" },
@@ -21,6 +22,7 @@ return {
 				html = { "prettierd" },
 				rust = { "rustfmt" },
 				cpp = { "clang-format" },
+				python = { "ruff_format" },
 			},
 
 			-- NOTE: this will cause it to format a file

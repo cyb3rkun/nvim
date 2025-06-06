@@ -2,29 +2,36 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = {
-			"rafamadriz/friendly-snippets",
-			"L3MON4d3/LuaSnip",
+			{
+				"L3MON4d3/LuaSnip",
+				version = "v2.*",
+				dependencies = { "rafamadriz/friendly-snippets" },
+			},
 			"folke/lazydev.nvim",
 		},
 
 		version = "*",
 
-		---@module 'blink.cmp'
-		---@type blink.cmp.Config
+		--- @module 'blink.cmp'
+		--- @type blink.cmp.Config
 		opts = {
 			keymap = {
-				preset = "default",
 				-- C-CR is not working as a select_and_accept input
-				["<C-CR>"] = { "select_and_accept" },
+				["<C-CR>"] = { "select_and_accept", "fallback" },
 				["<C-y>"] = { "select_and_accept", "fallback" },
-				["<CR>"] = {},
-				-- ["<C-SPACE>"] = { "show", "fallback" },
-				-- ["<CR>"] = { "accept", "fallback" },
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-				["<C-e>"] = { "hide", "fallback" },
+				["<C-h>"] = { "hide", "fallback" },
 
-				["<Tab>"] = { "snippet_forward", "fallback" },
-				["<S-Tab>"] = { "snippet_backward", "fallback" },
+				["<A-j>"] = {
+					"snippet_forward",
+					-- "select_and_accept",
+					"fallback",
+				},
+
+				["<A-k>"] = {
+					"snippet_backward",
+					"fallback",
+				},
 
 				["<Up>"] = { "select_prev", "fallback" },
 				["<Down>"] = { "select_next", "fallback" },
@@ -34,22 +41,20 @@ return {
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-				["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+				["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
 			},
-			snippets = {
-				preset = "luasnip",
-				-- jump = function(direction)
-				-- 	require("luasnip").jump(-direction)
-				-- end,
+			snippets = { preset = "luasnip" },
+
+			signature = {
+				enabled = true,
 			},
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "buffer", "path", "snippets" },
 				providers = {
 					lsp = {
 						name = "lsp",
 						enabled = true,
 						module = "blink.cmp.sources.lsp",
-						-- kind = "LSP",
 						score_offset = 200,
 					},
 					lazydev = {
@@ -66,12 +71,45 @@ return {
 					},
 				},
 			},
+			cmdline = {
+				enabled = true,
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+				},
+				keymap = {
+					-- C-CR is not working as a select_and_accept input
+					["<C-CR>"] = { "select_and_accept" },
+					["<C-h>"] = { "hide", "fallback" },
+					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+
+					["<Tab>"] = {
+						"snippet_forward",
+						"select_and_accept",
+						"fallback",
+					},
+					["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+					["<Up>"] = { "select_prev", "fallback" },
+					["<Down>"] = { "select_next", "fallback" },
+
+					["<C-b>"] = { "scroll_documentation_up", "fallback" },
+					["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+					["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
+				},
+			},
 			completion = {
 				menu = {
-					border = "single",
+					border = "rounded",
 					draw = {
 						columns = {
-							{ "source_name", "label", "label_description", gap = 1 },
+							{ --[[ "source_name", ]]
+								"label",
+								"label_description",
+								gap = 1,
+							},
 							{ "kind_icon" },
 						},
 						gap = 1,
@@ -80,8 +118,9 @@ return {
 				},
 				documentation = {
 					auto_show = true,
+					auto_show_delay_ms = 350,
 					window = {
-						border = "single",
+						border = "rounded",
 					},
 				},
 				accept = {
@@ -98,40 +137,40 @@ return {
 				nerd_font_variant = "mono",
 
 				kind_icons = {
-					Text = "󰉿 ",
-					Method = " ",
-					Function = "󰊕 ",
-					Constructor = "󰒓 ",
+					Text = " 󰉿 ",
+					Method = "  ",
+					Function = " 󰊕 ",
+					Constructor = " 󰒓 ",
 
-					Field = "󰜢 ",
-					Variable = "󰆦 ",
-					Property = "󰖷 ",
+					Field = "  ",
+					Variable = " 󰆦 ",
+					Property = " 󰖷 ",
 
-					Class = "󱡠 ",
-					Interface = "󱡠 ",
-					Struct = "󱡠 ",
-					Module = "󰅩 ",
+					Class = "  ",
+					Interface = "  ",
+					Struct = "  ",
+					Module = " 󰅩 ",
 
-					Unit = "󰪚 ",
-					Value = "󰦨 ",
-					Enum = "󰦨 ",
-					EnumMember = "󰦨 ",
+					Unit = " 󰪚 ",
+					Value = " 󰦨 ",
+					Enum = "{𝗘}",
+					EnumMember = "  ",
 
-					Keyword = "󰻾 ",
-					Constant = "󰏿 ",
+					Keyword = " 󰻾 ",
+					Constant = " 󰏿 ",
 
 					Snippet = "  ",
-					Color = "󰏘 ",
-					File = "󰈔 ",
-					Reference = "󰬲 ",
-					Folder = "󰉋 ",
-					Event = "󱐋 ",
-					Operator = "󰪚 ",
-					TypeParameter = "󰬛 ",
-					Error = "󰏭 ",
-					Warning = "󰏯 ",
-					Information = "󰏮 ",
-					Hint = "󰏭 ",
+					Color = " 󰏘 ",
+					File = " 󰈔 ",
+					Reference = " 󰬲 ",
+					Folder = "  ",
+					Event = "  ",
+					Operator = " 󰪚 ",
+					TypeParameter = "  ",
+					Error = "  ",
+					Warning = "  ",
+					Information = "  ",
+					Hint = " 󰏭 ",
 				},
 			},
 		},

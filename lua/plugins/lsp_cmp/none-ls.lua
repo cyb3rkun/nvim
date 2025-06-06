@@ -1,12 +1,20 @@
 return {
 	"nvimtools/none-ls.nvim",
 	dependencies = {
+		"nvimtools/none-ls-extras.nvim",
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
 		local null_ls = require("null-ls")
+
+		local sources = {
+			-- require("none-ls.formatting.ruff").with({ extra_args = { "--extend-selected", "I" } }),
+			-- require("none-ls.formatting.ruff_format"),
+			null_ls.builtins.formatting.clang_format,
+		}
 		null_ls.setup({
-			sources = {
+			sources = sources,
+				-- {
 				-- add linters and formatters and diagnostics here
 				-- a full list of supported languages for none-ls can be found on their github
 				-- null_ls.builtins.formatting.stylua,
@@ -35,7 +43,7 @@ return {
 				-- 		"--trailing-comma", "all",
 				-- 	}
 				-- }),
-			},
+			-- },
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 	end,

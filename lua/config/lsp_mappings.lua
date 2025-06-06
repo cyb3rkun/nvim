@@ -2,6 +2,7 @@ local keymap = vim.keymap.set
 -- NOTE: using the keymap variable is equivelent to using vim.keymap.set("mode n=normal v=visual i=insert","key", action)
 
 -- NOTE: Define a keymaps variable to store our keymaps as a function
+---@diagnostic disable-next-line: unused-local
 local keymaps = function(client, bufnr)
 	-- NOTE: rename references throughout an entire file?
 	keymap("n", "<leader>rn", vim.lsp.buf.rename, {
@@ -93,6 +94,7 @@ local keymaps = function(client, bufnr)
 		buffer = bufnr,
 		desc = "Hover Documentation",
 	})
+	-- keymap("n", "K", require("noice.lsp.hover").hover())
 
 	-- NOTE: show signature help for what is currently under the cursor
 	keymap("n", "<leader>k", vim.lsp.buf.signature_help, {

@@ -81,7 +81,10 @@ return {
 			"html",
 			"cssls",
 			"eslint",
-			"pylyzer",
+			"ruff",
+			"buff",
+			-- "black"
+			-- "pylsp",
 			-- "biome", -- For JS, TS and other web languages
 			-- "neorg-interim-ls",
 		}
@@ -94,6 +97,23 @@ return {
 			})
 		end
 
+		lsp.pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						pyflakes = { enabled = false },
+						pycodestyle = { enabled = false },
+						autopep8 = { enabled = false },
+						yapf = { enabled = false },
+						mccabe = { enabled = false },
+						pylsp_mypy = { enabled = false },
+						pylsp_black = { enabled = false },
+						pylsp_isort = { enabled = false },
+					},
+				},
+			},
+
+		})
 		lsp.biome.setup({
 			on_attach = lsp_attach,
 			capabilities = capabilities,
@@ -125,6 +145,7 @@ return {
 
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 
+			
 			root_dir = lsp.util.root_pattern(
 				".clang-format",
 				".editor-config",

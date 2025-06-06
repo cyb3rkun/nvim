@@ -88,7 +88,10 @@ return {
 				"IblOne",
 				"IblTwo",
 				"IblThree",
-				-- "Whitespace"
+				"IblFour",
+				"IblFive",
+				"IblSix",
+				"IblSeven",
 			}
 			local whitespace_hl = {
 				"ColorColumn",
@@ -96,9 +99,13 @@ return {
 			}
 			local hooks = require("ibl.hooks")
 			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "IblOne", { fg = "#23383d" })
-				vim.api.nvim_set_hl(0, "IblTwo", { fg = "#52848d" })
-				vim.api.nvim_set_hl(0, "IblThree", { fg = "#9abec5" })
+				vim.api.nvim_set_hl(0, "IblOne", { fg = "#ff8f8f" })
+				vim.api.nvim_set_hl(0, "IblTwo", { fg = "#ff6666" })
+				vim.api.nvim_set_hl(0, "IblThree", { fg = "#ff3d3d" })
+				vim.api.nvim_set_hl(0, "IblFour", { fg = "#ff1414" })
+				vim.api.nvim_set_hl(0, "IblFive", { fg = "#c20000" })
+				vim.api.nvim_set_hl(0, "IblSix", { fg = "#990000" })
+				vim.api.nvim_set_hl(0, "IblSeven", { fg = "#700000" })
 			end)
 			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 				vim.api.nvim_set_hl(0, "One", { bg = "#1b1c30" })
@@ -109,14 +116,14 @@ return {
 					highlight = highlight,
 				},
 				scope = {
-					enabled = true,
+					enabled = false,
 					show_start = true,
 					show_end = true,
-					include = {
-						node_type = {
-							["*"] = { "*" },
-						},
-					},
+					-- include = {
+					-- 	node_type = {
+					-- 		["*"] = { "*" },
+					-- 	},
+					-- },
 				},
 				whitespace = {
 					-- highlight = whitespace_hl
@@ -130,9 +137,28 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local function relative_path()
+				return [[path is path!]]
+			end
 			require("lualine").setup({
 				options = {
 					theme = "tokyonight-storm",
+					globalstatus = true,
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = {
+						-- { relative_path },
+						{
+							"filename",
+							file_status = true,
+							path = 1,
+						},
+					},
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
 				},
 			})
 		end,
@@ -160,13 +186,36 @@ return {
 			local exchange = require("substitute.exchange")
 
 			substitute.setup({
-				yank_substituted_text = true,
+				on_substitute = nil,
+				yank_substituted_text = false,
+				preserve_cursor_position = false,
+				modifiers = nil,
+				highlight_substituted_text = {
+					enabled = true,
+					timer = 500,
+				},
+				range = {
+					prefix = "s",
+					prompt_current_text = false,
+					confirm = false,
+					complete_word = false,
+					subject = nil,
+					range = nil,
+					suffix = "",
+					auto_apply = false,
+					cursor_position = "end",
+				},
+				exchange = {
+					motion = false,
+					use_esc_to_cancel = true,
+					preserve_cursor_position = false,
+				},
 			})
 
 			local keymap = vim.keymap.set
 
-			keymap("n", "q", substitute.operator, { desc = "Substitute with motion" })
-			keymap("n", "qq", substitute.line, { desc = "Substitute line" })
+			keymap("n", "<Insert>", substitute.operator, { desc = "Substitute with motion" })
+			keymap("n", "<Insert><Insert>", substitute.line, { desc = "Substitute line" })
 			keymap("n", "Q", substitute.eol, { desc = "Substitute to end of line" })
 			keymap("x", "q", substitute.line, { desc = "Substitute in visual mode" })
 
@@ -175,14 +224,27 @@ return {
 				desc = "swap with motion",
 			})
 			keymap("n", "sxx", exchange.line, {
-				noremap = true,desc = "swap linewise"
+				noremap = true,
+				desc = "swap linewise",
 			})
 			keymap("x", "X", exchange.visual, {
-				noremap = true,desc = "swap visual selection"
+				noremap = true,
+				desc = "swap visual selection",
 			})
 			keymap("n", "sxc", exchange.cancel, {
-				noremap = true,desc = "cancel swap"
+				noremap = true,
+				desc = "cancel swap",
 			})
 		end,
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
 	},
 }

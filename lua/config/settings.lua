@@ -38,8 +38,7 @@ vim.opt.wrap = false
 vim.opt.termguicolors = true
 -- NOTE: enables the below list chars
 -- vim.opt.list = true
--- vim.opt.listchars = { tab = "➤ ", trail = "~", nbsp = "␣" }
-
+-- vim.opt.listchars = { tab = "│ "}
 -- NOTE: prevents the cursor from going closer than 30 lines to the
 -- top or bottom.
 -- WARN: does not work near end or beginning of file
