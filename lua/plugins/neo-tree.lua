@@ -22,7 +22,7 @@ return {
 			enable_git_status = true,
 			use_libuv_file_watcher = true,
 			window = {
-				position = "right",
+				position = "left",
 				width = 25,
 				mappings = {
 					["c"] = function(state)

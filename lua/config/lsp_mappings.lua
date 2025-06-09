@@ -90,7 +90,13 @@ local keymaps = function(client, bufnr)
 
 	-- See `:help K` for why this keymap
 	-- NOTE: show documentation for what is currently under the cursor
-	keymap("n", "K", vim.lsp.buf.hover, {
+	keymap("n", "K", function()
+		---@type vim.lsp.buf.hover.Opts
+		local opts = {
+			border = "single"
+		}
+		vim.lsp.buf.hover(opts)
+	end, {
 		buffer = bufnr,
 		desc = "Hover Documentation",
 	})

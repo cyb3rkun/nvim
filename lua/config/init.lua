@@ -1,5 +1,6 @@
 require("config.settings")
+require("config.custom_functions")
+-- require("config.rust")
 require("config.lazy")
 require("config.mappings")
 require("config.auto_commands")
-require("config.custom_functions")

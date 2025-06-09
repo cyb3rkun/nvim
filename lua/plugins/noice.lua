@@ -26,7 +26,7 @@ return {
 		},
 		lsp = {
 			signature = {
-				enabled=true,
+				enabled=false,
 				auto_open = {
 					enabled = true,
 					trigger = true,
@@ -34,16 +34,16 @@ return {
 					throttle = 50,
 				}
 			},
-			override = {
-				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-				["vim.lsp.util.stylize_markdown"] = true,
-				["vim.lsp.get_documentation"] = true,
-			},
+			-- override = {
+			-- 	["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			-- 	["vim.lsp.util.stylize_markdown"] = true,
+			-- 	["vim.lsp.get_documentation"] = true,
+			-- },
 		},
 		presets = {
-			bottom_search = true,
+			bottom_search = false,
 			-- command_pallete = true,
-			long_message_to_split = true,
+			long_message_to_split = false,
 			inc_rename = false,
 			-- lsp_doc_border = false,
 		}

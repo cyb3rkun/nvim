@@ -8,6 +8,34 @@ return {
 				dependencies = { "rafamadriz/friendly-snippets" },
 			},
 			"folke/lazydev.nvim",
+			{
+				"saecki/crates.nvim",
+				event = { "BufRead Cargo.toml" },
+				config = function()
+					require("crates").setup({
+						lsp = {
+							enabled = true,
+							actions = true,
+							hover = true,
+							completion = true
+						},
+					})
+				end,
+				-- opts = {
+				-- completion = true
+				-- 	completion = {
+				-- 		cmp = {
+				-- 			enabled = true,
+				-- 		},
+				-- 	},
+				-- 	lsp = {
+				-- 		enabled = true,
+				-- 		actions = true,
+				-- 		completion = true,
+				-- 		hover = true,
+				-- 	},
+				-- },
+			},
 		},
 
 		version = "*",
@@ -68,6 +96,11 @@ return {
 						enabled = true,
 						module = "blink.cmp.sources.snippets",
 						score_offset = 20,
+					},
+					crates = {
+						name = "crates",
+						enabled = true,
+						module = "crates",
 					},
 				},
 			},

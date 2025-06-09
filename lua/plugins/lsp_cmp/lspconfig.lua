@@ -16,11 +16,7 @@ return {
 			-- opts = {}
 		},
 	},
-	opts = {
-		servers = {
-			lua_ls = {},
-		},
-	},
+	opts = nil,
 
 	config = function()
 		local lsp = require("lspconfig")
@@ -39,21 +35,34 @@ return {
 		---@diagnostic disable-next-line: unused-local
 		local opts = { noremap = true, silent = true }
 
-		local lsp_attach = function(client, bufnr)
-			---@diagnostic disable-next-line: unused-local
-			opts.buffer = bufnr
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(ev)
+				local bufnr = ev.buf
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
-			-- NOTE:  keymaps are defined in lsp_keymaps
+				local keymaps = require("config.lsp_mappings")
+				keymaps(client, bufnr)
 
-			local keymaps = require("config.lsp_mappings")
-			-- local keymaps = require("Cyb3rVim.lsp.lsp_keymaps")
-			--
-			keymaps(client, bufnr)
-
-			vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
-				vim.lsp.buf.format()
-			end, { desc = "Format current buffer with lsp" })
-		end
+				vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+					vim.lsp.buf.format()
+				end, { desc = "Format current buffer with lsp" })
+			end,
+		})
+		-- local lsp_attach = function(client, bufnr)
+		-- 	---@diagnostic disable-next-line: unused-local
+		-- 	opts.buffer = bufnr
+		--
+		-- 	-- NOTE:  keymaps are defined in lsp_keymaps
+		--
+		-- 	local keymaps = require("config.lsp_mappings")
+		-- 	-- local keymaps = require("Cyb3rVim.lsp.lsp_keymaps")
+		-- 	--
+		-- 	keymaps(client, bufnr)
+		--
+		-- 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+		-- 		vim.lsp.buf.format()
+		-- 	end, { desc = "Format current buffer with lsp" })
+		-- end
 
 		-- NOTE: Change the Diagnostic symbols in the gutter
 		local signs = {
@@ -82,7 +91,8 @@ return {
 			"cssls",
 			"eslint",
 			"ruff",
-			"buff",
+			-- "bacon-ls"
+			-- "buf",
 			-- "black"
 			-- "pylsp",
 			-- "biome", -- For JS, TS and other web languages
@@ -97,6 +107,12 @@ return {
 			})
 		end
 
+		lsp.bacon_ls.setup({
+			init_options = {
+				updateOnSave = true,
+				updateOnSaveWaitMillis = 1000,
+			},
+		})
 		lsp.pylsp.setup({
 			settings = {
 				pylsp = {
@@ -112,40 +128,67 @@ return {
 					},
 				},
 			},
-
 		})
 		lsp.biome.setup({
-			on_attach = lsp_attach,
+			-- on_attach = lsp_attach,
 			capabilities = capabilities,
-			filetypes = { "js", "ts", "json"}
+			filetypes = { "js", "ts", "json" },
 		})
 
-		lsp.rust_analyzer.setup({
-			on_attach = lsp_attach,
-			capabilities = capabilities,
-			filetypes = { "rust" },
-			root_dir = lsp.util.root_pattern("Cargo.toml"),
-			settings = {
-				cargo = {
-					allFeatures = true,
-				},
+		-- lsp.rust_analyzer.setup({
+		-- 	-- on_attach = lsp_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "rust" },
+		-- 	-- update_in_insert = true,
+		-- 	settings = {
+		-- 		["rust-analyzer"] = {
+		-- 			cargo = {
+		-- 				allFeatures = true,
+		-- 			},
+		-- 			diagnostics = {
+		-- 				enabled = true,
+		-- 				experimental = {
+		-- 					enabled = true,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+
+		lsp.ast_grep.setup({
+			-- these are the default options, you only need to specify
+			-- options you'd like to change from the default
+			cmd = { "ast-grep", "lsp" },
+			filetypes = {
+				"c",
+				"cpp",
+				"rust",
+				"go",
+				"java",
+				"python",
+				"javascript",
+				"typescript",
+				"html",
+				"css",
+				"kotlin",
+				"dart",
+				"lua",
 			},
+			root_dir = require("lspconfig.util").root_pattern("sgconfig.yaml", "sgconfig.yml"),
 		})
-
 		-- NOTE: Advanced LSP setups
 		lsp.gdshader_lsp.setup({
 			capabilities = capabilities,
-			on_attach = lsp_attach,
+			-- on_attach = lsp_attach,
 			cmd = { "/home/cyb3rkun/.local/share/gdshader-lsp/gdshader-lsp" },
 		})
 
 		lsp.clangd.setup({
 			capabilities = capabilities,
-			on_attach = lsp_attach,
+			-- on_attach = lsp_attach,
 
 			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 
-			
 			root_dir = lsp.util.root_pattern(
 				".clang-format",
 				".editor-config",

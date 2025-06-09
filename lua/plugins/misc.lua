@@ -11,6 +11,7 @@ return {
 					virtual_lines = {
 						only_current_line = false,
 					},
+					update_in_insert = true,
 				})
 				vim.keymap.set("", "<leader>sl", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
 			end,
@@ -137,17 +138,14 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			local function relative_path()
-				return [[path is path!]]
-			end
 			require("lualine").setup({
 				options = {
 					theme = "tokyonight-storm",
 					globalstatus = true,
 				},
 				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
+						lualine_a = { "mode" },
+						lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = {
 						-- { relative_path },
 						{
@@ -216,8 +214,8 @@ return {
 
 			keymap("n", "<Insert>", substitute.operator, { desc = "Substitute with motion" })
 			keymap("n", "<Insert><Insert>", substitute.line, { desc = "Substitute line" })
-			keymap("n", "Q", substitute.eol, { desc = "Substitute to end of line" })
-			keymap("x", "q", substitute.line, { desc = "Substitute in visual mode" })
+			keymap("n", "<F3>", substitute.eol, { desc = "Substitute to end of line" })
+			keymap("x", "<F7>", substitute.line, { desc = "Substitute in visual mode" })
 
 			keymap("n", "sx", exchange.operator, {
 				noremap = true,

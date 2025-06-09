@@ -27,9 +27,10 @@ return {
 
 		-- NOTE: Setup mason LSPCONFIG after mason
 		mason_lspconfig.setup({
+			automatic_enable = false,
 			ensure_installed = {
-				"lua_ls",
-				"clangd",
+				-- "lua_ls",
+				-- "clangd",
 			},
 			automatic_installation = true,
 		})
@@ -37,11 +38,11 @@ return {
 		-- NOTE: mason-tool-installer setup
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"clang-format", -- NOTE: Formatter for C C++ OBJC OBJC++ and more
-				"stylua", -- NOTE: Formatter for Lua
-				--NOTE: gd_lint gdscript gdformat GDScript all fail to be acquired automatically
-				"gdtoolkit",
-				"prettierd", -- NOTE: Formatter for css html and other web languages?
+				-- "clang-format", -- NOTE: Formatter for C C++ OBJC OBJC++ and more
+				-- "stylua", -- NOTE: Formatter for Lua
+				-- -- NOTE: gd_lint gdscript gdformat GDScript all fail to be acquired automatically
+				-- "gdtoolkit",
+				-- "prettierd", -- NOTE: Formatter for css html and other web languages?
 				-- "rust-analyzer",
 			},
 		})

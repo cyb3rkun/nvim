@@ -17,13 +17,13 @@ return {
 		-- local extras = require("luasnip.extras")
 		local fmt = require("luasnip.extras.fmt").fmt
 
-		vim.keymap.set({ "i", "s" }, "<A-j>", function()
+		vim.keymap.set({ "i", "s" }, "<A-j>", function ()
 			if ls.jumpable(-1) then
 				ls.jump(-1)
 			end
 		end, { silent = true, desc = "Jump to the next insert node" })
 
-		vim.keymap.set({ "i", "s" }, "<A-k>", function()
+		vim.keymap.set({ "i", "s" }, "<A-k>", function ()
 			if ls.jumpable(1) then
 				ls.jump(1)
 			end

@@ -10,7 +10,7 @@ return {
 		local sources = {
 			-- require("none-ls.formatting.ruff").with({ extra_args = { "--extend-selected", "I" } }),
 			-- require("none-ls.formatting.ruff_format"),
-			null_ls.builtins.formatting.clang_format,
+			-- null_ls.builtins.formatting.clang_format,
 		}
 		null_ls.setup({
 			sources = sources,
@@ -34,7 +34,7 @@ return {
 				-- but <leader>gf seems to be a bit faster
 				-- null_ls.builtins.lsp
 				-- null_ls.builtins.lsp.biome,
-				null_ls.builtins.formatting.clang_format,
+				-- null_ls.builtins.formatting.clang_format,
 				-- null_ls.builtins.formatting.prettier.withd({
 				-- 	extra_args = {
 				-- 		"--print-width", "80",

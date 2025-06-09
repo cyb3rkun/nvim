@@ -1,6 +1,6 @@
 -- DESCRIPTION: set vim options in this file
-vim.g.mapleader = " "
-vim.g.maplocalleader = "."
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = "."
 
 vim.opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.mouse = "a" --Mouse Support
@@ -47,3 +47,4 @@ vim.opt.scrolloff = 15
 -- NOTE: Highlight the current line
 vim.opt.cursorline = true
 vim.g.rust_recommended_style=0
+-- vim.o.winborder="single"

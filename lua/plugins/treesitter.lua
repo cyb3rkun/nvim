@@ -47,10 +47,6 @@ return {
 					-- disable = true,
 				},
 
-				-- autotag = {
-				-- 	enable = true,
-				-- },
-
 				incremental_selection = {
 					enable = true,
 					keymaps = {
@@ -63,28 +59,32 @@ return {
 			})
 		end,
 	},
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter-context",
+	-- 	-- lazy = true,
+	-- 	config = function()
+	-- 		require("treesitter-context").setup({
+	-- 			enable = true,
+	-- 			max_lines = 2,
+	-- 		})
+	-- 		vim.keymap.set("n", "[c", function()
+	-- 			require("treesitter-context").go_to_context(vim.v.count1)
+	-- 		end, { silent = true })
+	-- 	end,
+	-- },
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		-- lazy = true,
+		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
 		config = function()
-			require("treesitter-context").setup({
-				enable = false,
+			require("nvim-ts-autotag").setup({
+				opts = {
+					enable_close = true,
+					enable_renable = true,
+					enable_close_on_slash = true,
+				},
 			})
 		end,
 	},
-	-- {
-	-- 	"windwp/nvim-ts-autotag",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require("nvim-ts-autotag").setup({
-	-- 			opts = {
-	-- 				enable_close = true,
-	-- 				enable_renable = true,
-	-- 				enable_close_on_slash = true,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"echasnovski/mini.ai",
 		version = "*",
@@ -108,6 +108,7 @@ return {
 					goto_left = "g[",
 					goto_right = "g]",
 				},
+
 				custom_textobjects = {
 					m = ts_spec({
 						a = "@function.outer",
@@ -158,16 +159,20 @@ return {
 						i = { "@type.inner" },
 					}),
 					e = ts_spec({
-						a = { "@enum"},
-						i = { "@enum"}
+						a = { "@enum" },
+						i = { "@enum" },
 					}),
 					N = ts_spec({
-						a = {"@name"},
-						i = {"@name"}
-					})
+						a = { "@name" },
+						i = { "@name" },
+					}),
+					v = ts_spec({
+						a = { "@value.outer" },
+						i = { "@value.inner" },
+					}),
 				},
 				n_lines = 300,
-				search_method = "cover_or_next",
+				search_method = "cover_or_nearest",
 				silent = false,
 			})
 		end,
@@ -179,9 +184,9 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				custom_textobjects = {
-						["L="] = { "@assignment.lhs"},
-						["R="] = { "@assignment.rhs"}
-				}
+					["L="] = { "@assignment.lhs" },
+					["R="] = { "@assignment.rhs" },
+				},
 			})
 		end,
 	},
