@@ -26,7 +26,7 @@ vim.g.rustaceanvim = {
 					buildScripts = { enable = true },
 				},
 				checkOnSave = {
-					command = "check", -- Use clippy for linting
+					command = "clippy", -- Use clippy for linting
 				},
 				procMacro = { enable = true }, -- Enable proc-macro support
 				diagnostics = {

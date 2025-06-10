@@ -5,7 +5,7 @@ return {
 	config = function()
 		local term = require("toggleterm")
 		term.setup({
-			size = 20, -- Height of the horizontal split (in lines)
+			size = 12, -- Height of the horizontal split (in lines)
 			open_mapping = nil, -- We'll define our own keymap
 			direction = "horizontal", -- Horizontal split
 			shade_terminals = false, -- Slightly darken terminal background
