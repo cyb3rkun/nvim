@@ -59,23 +59,11 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter-context",
-	-- 	-- lazy = true,
-	-- 	config = function()
-	-- 		require("treesitter-context").setup({
-	-- 			enable = true,
-	-- 			max_lines = 2,
-	-- 		})
-	-- 		vim.keymap.set("n", "[c", function()
-	-- 			require("treesitter-context").go_to_context(vim.v.count1)
-	-- 		end, { silent = true })
-	-- 	end,
-	-- },
 	{
 		"windwp/nvim-ts-autotag",
 		event = "VeryLazy",
 		config = function()
+			---@diagnostic disable-next-line: missing-fields
 			require("nvim-ts-autotag").setup({
 				opts = {
 					enable_close = true,
