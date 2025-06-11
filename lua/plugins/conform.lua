@@ -6,6 +6,9 @@ return {
 	config = function()
 		local conform = require("conform") -- NOTE: this should not be necessary
 
+		conform .formatters.beautysh = {
+			prepend_args = {"-t"}
+		}
 		-- NOTE: here we run the setup function
 		conform.setup({
 			log_level = vim.log.levels.DEBUG,
@@ -23,6 +26,8 @@ return {
 				rust = { "rustfmt" },
 				cpp = { "clang-format" },
 				python = { "ruff_format" },
+				bash = { "beautysh" },
+				sh = { "beautysh" },
 			},
 
 			-- NOTE: this will cause it to format a file
