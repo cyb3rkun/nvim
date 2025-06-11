@@ -25,7 +25,7 @@ return {
 					vim.defer_fn(function()
 						local cmd = string.format("Neotree toggle")
 						print("toggling ntree!")
-						vim.notify("toggling ntree", vim.log.levels.TRACE, {})
+						-- vim.notify("toggling ntree", vim.log.levels.TRACE, {})
 						vim.cmd(cmd)
 						vim.cmd(cmd)
 						vim.cmd("wincmd p")
