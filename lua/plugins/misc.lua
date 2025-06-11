@@ -2,21 +2,6 @@ return {
 	-- Small plugins
 	{
 		{
-			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-			config = function()
-				require("lsp_lines").setup()
-				-- pri
-				vim.diagnostic.config({
-					virtual_text = false,
-					virtual_lines = {
-						only_current_line = false,
-					},
-					update_in_insert = true,
-				})
-				vim.keymap.set("", "<leader>sl", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-			end,
-		},
-		{
 			"windwp/nvim-autopairs",
 			event = { "InsertEnter" },
 			config = true,
