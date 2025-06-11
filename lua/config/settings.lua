@@ -46,9 +46,9 @@ vim.opt.scrolloff = 15
 
 -- NOTE: Highlight the current line
 vim.opt.cursorline = true
-vim.g.rust_recommended_style=0
--- vim.o.winborder="single"
+vim.g.rust_recommended_style = 0
+
+-- [[Set Up Diagnostics]] --
 vim.diagnostic.config({
-	virtual_text = false,
 	virtual_lines = true,
 })
