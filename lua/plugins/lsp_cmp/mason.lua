@@ -29,8 +29,17 @@ return {
 		mason_lspconfig.setup({
 			automatic_enable = false,
 			ensure_installed = {
-				-- "lua_ls",
-				-- "clangd",
+				"lua_ls",
+				"jdtls",
+				"gdscript",
+				-- "csharp_ls",
+				"bashls",
+				"marksman",
+				"html",
+				"cssls",
+				"eslint",
+				"ruff",
+				"clangd",
 			},
 			automatic_installation = true,
 		})
