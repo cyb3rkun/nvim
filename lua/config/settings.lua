@@ -48,3 +48,7 @@ vim.opt.scrolloff = 15
 vim.opt.cursorline = true
 vim.g.rust_recommended_style=0
 -- vim.o.winborder="single"
+vim.diagnostic.config({
+	virtual_text = false,
+	virtual_lines = true,
+})
