@@ -7,7 +7,27 @@ return {
 				version = "v2.*",
 				dependencies = { "rafamadriz/friendly-snippets" },
 			},
-			"folke/lazydev.nvim",
+			{
+				"folke/lazydev.nvim",
+				dependencies = {
+					"gonstoll/wezterm-types",
+					-- lazy = true,
+				},
+				opts = {
+					lsp = {
+						settings = {
+							Lua = {
+								workspace = {
+									checkThirdParty = "Apply",
+								},
+							},
+						},
+					},
+					library = {
+						{ path = "wezterm-types", mods = { "wezterm" } },
+					},
+				},
+			},
 			{
 				"saecki/crates.nvim",
 				event = { "BufRead Cargo.toml" },
@@ -17,26 +37,13 @@ return {
 							enabled = true,
 							actions = true,
 							hover = true,
-							completion = true
+							completion = true,
 						},
 					})
 				end,
-				-- opts = {
-				-- completion = true
-				-- 	completion = {
-				-- 		cmp = {
-				-- 			enabled = true,
-				-- 		},
-				-- 	},
-				-- 	lsp = {
-				-- 		enabled = true,
-				-- 		actions = true,
-				-- 		completion = true,
-				-- 		hover = true,
-				-- 	},
-				-- },
 			},
 		},
+		-- },
 
 		version = "*",
 
@@ -89,7 +96,7 @@ return {
 						name = "LazyDev",
 						enabled = true,
 						module = "lazydev.integrations.blink",
-						score_offset = 100,
+						score_offset = 300,
 					},
 					snippets = {
 						name = "Snippets",
@@ -138,7 +145,8 @@ return {
 					border = "rounded",
 					draw = {
 						columns = {
-							{ --[[ "source_name", ]]
+							{
+								--[[ "source_name", ]]
 								"label",
 								"label_description",
 								gap = 1,
