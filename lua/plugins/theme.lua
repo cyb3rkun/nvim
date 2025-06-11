@@ -4,17 +4,17 @@ return {
 	priority = 1000,
 	opts = {},
 	config = function()
-		local colors = {
-			bg = "",
-			bg_dark = "",
-			bg_highlight = "",
-			bg_search = "",
-			bg_visual = "",
-			fg = "",
-			fg_dark = "",
-			fg_gutter = "",
-			border = "",
-		}
+		-- local colors = {
+		-- 	bg = "",
+		-- 	bg_dark = "",
+		-- 	bg_highlight = "",
+		-- 	bg_search = "",
+		-- 	bg_visual = "",
+		-- 	fg = "",
+		-- 	fg_dark = "",
+		-- 	fg_gutter = "",
+		-- 	border = "",
+		-- }
 		local config = {
 			transparent = true,
 			style = "night",
@@ -30,6 +30,13 @@ return {
 				sidebars = "transparent",
 				floats = "transparent",
 			},
+			on_colors = function(colors)
+				colors.bg_statusline = colors.none
+				colors.comment = "#407F90"
+			end,
+			-- on_highlights = function (hl)
+			-- 	hl.comment = {bg = nil, fg = "#000000"}
+			-- end,
 			cache = true,
 		}
 		require("tokyonight").setup(config)
@@ -53,7 +60,7 @@ return {
 			callback = function()
 				vim.api.nvim_set_hl(0, "CursorLine", {
 					-- bg = nil,
-					
+
 					-- ctermbg = 16,
 					-- ctermfg = 16,
 					-- blend = 50,
