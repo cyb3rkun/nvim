@@ -93,7 +93,7 @@ local keymaps = function(client, bufnr)
 	keymap("n", "K", function()
 		---@type vim.lsp.buf.hover.Opts
 		local opts = {
-			border = "single"
+			border = "single",
 		}
 		vim.lsp.buf.hover(opts)
 	end, {
@@ -108,11 +108,15 @@ local keymaps = function(client, bufnr)
 		desc = "Signature Documentation",
 	})
 
-	keymap("n", "[d", vim.diagnostic.goto_prev, {
+	keymap("n", "]d", function()
+		vim.diagnostic.jump({ count = 1, float = true })
+	end, {
 		desc = "Go to previous [D]iagnostic message",
 	})
 
-	keymap("n", "]d", vim.diagnostic.goto_next, {
+	keymap("n", "[d", function()
+		vim.diagnostic.jump({ count = -1, float = true })
+	end, {
 		desc = "Go to next [D]iagnostic message",
 	})
 
