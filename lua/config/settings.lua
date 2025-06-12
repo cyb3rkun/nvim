@@ -44,7 +44,6 @@ vim.opt.termguicolors = true
 -- WARN: does not work near end or beginning of file
 vim.opt.scrolloff = 15
 
--- NOTE: Highlight the current line
 vim.opt.cursorline = true
 vim.g.rust_recommended_style = 0
 

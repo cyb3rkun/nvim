@@ -47,8 +47,8 @@ return {
 			function() -- NOTE: the keymap works in n and v modes and is <leader>mp
 				-- NOTE: here we call the format function from conform and pass it our formatting options
 				conform.format({
-					lsp_fallback = false,
-					async = true,
+					lsp_fallback = true,
+					async = false,
 					timeout_ms = 500,
 				})
 			end,
