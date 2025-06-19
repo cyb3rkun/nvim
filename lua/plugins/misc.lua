@@ -10,7 +10,11 @@ return {
 			"kylechui/nvim-surround",
 			event = "VeryLazy",
 			config = function()
-				require("nvim-surround").setup({})
+				require("nvim-surround").setup({
+					keymaps = {
+						visual = "<M-s>",
+					},
+				})
 			end,
 		},
 		{
@@ -121,8 +125,12 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"folke/noice.nvim",
+		},
 		config = function()
+			local noice = require("noice").api.status
 			require("lualine").setup({
 				options = {
 					theme = "tokyonight-storm",
@@ -139,9 +147,27 @@ return {
 							path = 1,
 						},
 					},
-					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_x = {
+						---@diagnostic disable: undefined-field
+						{
+							noice.command.get,
+							cond = noice.command.has,
+						},
+						---@diagnostic enable: undefined-field
+						"encoding",
+						"fileformat",
+						"filetype",
+					},
 					lualine_y = { "progress" },
-					lualine_z = { "location" },
+					lualine_z = {
+						---@diagnostic disable: undefined-field
+						{
+							noice.mode.get,
+							cond = noice.mode.has,
+						},
+						---@diagnostic enable: undefined-field
+						"location",
+					},
 				},
 			})
 		end,
