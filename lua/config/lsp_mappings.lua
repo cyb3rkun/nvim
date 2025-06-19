@@ -91,16 +91,21 @@ local keymaps = function(client, bufnr)
 	-- See `:help K` for why this keymap
 	-- NOTE: show documentation for what is currently under the cursor
 	keymap("n", "K", function()
-		---@type vim.lsp.buf.hover.Opts
-		local opts = {
-			border = "single",
-		}
-		vim.lsp.buf.hover(opts)
+		vim.lsp.buf.hover({
+			border = "rounded"
+		})
 	end, {
 		buffer = bufnr,
 		desc = "Hover Documentation",
 	})
-	-- keymap("n", "K", require("noice.lsp.hover").hover())
+	-- keymap("n", "x", function()
+	-- 	print("hello")
+	-- 	require("noice.lsp.hover").on_hover()
+	-- end,
+	-- 	{
+	-- 		desc = "Hover over current symbol"
+	-- 	}
+	-- )
 
 	-- NOTE: show signature help for what is currently under the cursor
 	keymap("n", "<leader>k", vim.lsp.buf.signature_help, {
@@ -113,7 +118,13 @@ local keymaps = function(client, bufnr)
 	end, {
 		desc = "Go to previous [D]iagnostic message",
 	})
-
+	-- NOTE: toggle virtual lines for diagnostics
+	Keymap("n", "<leader>sl", function()
+		local current = vim.diagnostic.config().virtual_lines
+		vim.diagnostic.config({
+			virtual_lines = not current,
+		})
+	end, { desc = "toggle virtual lines for Diagnostics" })
 	keymap("n", "[d", function()
 		vim.diagnostic.jump({ count = -1, float = true })
 	end, {

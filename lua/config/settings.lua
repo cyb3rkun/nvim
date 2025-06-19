@@ -10,7 +10,8 @@ vim.opt.undodir = vim.fn.expand("~/.local/state/nvim/undo/")
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.showmode = true
+
+-- vim.opt.showmode = true
 
 -- NOTE: show the maximum line length that you don't want to exceed
 vim.opt.colorcolumn = "72"
@@ -50,4 +51,12 @@ vim.g.rust_recommended_style = 0
 -- [[Set Up Diagnostics]] --
 vim.diagnostic.config({
 	virtual_lines = true,
+	underline = true,
+	float = {
+		border = "rounded"
+	}
+
 })
+
+-- NOTE: make all borders rounded
+-- vim.o.winborder = "rounded"

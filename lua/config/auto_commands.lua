@@ -5,10 +5,14 @@ vim.cmd("highlight YankHighlight guifg=#000000 guibg=#00FFFF")
 autocmd("TextYankPost", {
 	desc = "Highlight when yanking text",
 
-	group = vim.api.nvim_create_augroup("Cyb3rVim-highlight-yank", { clear = true }),
+	group = vim.api.nvim_create_augroup("Cyb3rVim-highlight-yank", {
+		clear = true,
+	}),
 
 	callback = function()
-		vim.highlight.on_yank({ higroup = "YankHighlight" })
+		vim.highlight.on_yank({
+			higroup = "YankHighlight",
+		})
 	end,
 })
 
@@ -49,17 +53,17 @@ autocmd({ "VimEnter", "DirChanged" }, {
 	end,
 })
 
-autocmd({ "BufWinLeave"}, {
+autocmd({ "BufWinLeave" }, {
 	pattern = "?*",
-	callback = function ()
+	callback = function()
 		vim.cmd("mkview")
 	end,
 })
-autocmd({ "BufWinEnter"}, {
+autocmd({ "BufWinEnter" }, {
 	pattern = "?*",
-	callback = function ()
+	callback = function()
 		vim.cmd("silent! loadview")
-	end
+	end,
 })
 
 autocmd({ "BufEnter", "BufWinEnter", "BufWinLeave" }, {
