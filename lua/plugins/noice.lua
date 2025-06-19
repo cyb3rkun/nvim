@@ -1,6 +1,18 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+		{
+			"rcarriga/nvim-notify",
+			config = function()
+				require("notify").setup({
+					enabled = true,
+					timeout = 50,
+				})
+			end,
+		},
+	},
 	opts = {
 		cmdline = {
 			enabled = true,
@@ -47,18 +59,6 @@ return {
 			inc_rename = false,
 			-- lsp_doc_border = false,
 		}
-	},
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-		{
-			"rcarriga/nvim-notify",
-			config = function()
-				require("notify").setup({
-					enabled = true,
-					timeout = 50,
-				})
-			end,
-		},
 	},
 }
 
