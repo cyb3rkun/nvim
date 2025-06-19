@@ -86,13 +86,14 @@ return {
 			"lua_ls",
 			"jdtls",
 			"gdscript",
-			"csharp_ls",
+			-- "csharp_ls",
 			"bashls",
 			"marksman",
 			"html",
 			"cssls",
 			"eslint",
 			"ruff",
+			"omnisharp",
 			-- "bacon-ls"
 			-- "buf",
 			-- "black"

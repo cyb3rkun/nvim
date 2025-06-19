@@ -31,8 +31,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"jdtls",
-				"gdscript",
-				-- "csharp_ls",
+				-- "gdtoolkit",
 				"bashls",
 				"marksman",
 				"html",
@@ -40,17 +39,21 @@ return {
 				"eslint",
 				"ruff",
 				"clangd",
+				"omnisharp",
+				"pylsp",
+				"biome", -- For JS, TS and other web languages
 			},
 			automatic_installation = true,
 		})
 
 		-- NOTE: mason-tool-installer setup
 		mason_tool_installer.setup({
+			automatic_enable = false,
 			ensure_installed = {
 				-- "clang-format", -- NOTE: Formatter for C C++ OBJC OBJC++ and more
 				-- "stylua", -- NOTE: Formatter for Lua
 				-- -- NOTE: gd_lint gdscript gdformat GDScript all fail to be acquired automatically
-				-- "gdtoolkit",
+				"gdtoolkit",
 				-- "prettierd", -- NOTE: Formatter for css html and other web languages?
 				-- "rust-analyzer",
 			},
