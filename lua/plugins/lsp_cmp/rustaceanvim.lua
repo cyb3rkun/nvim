@@ -3,7 +3,7 @@ vim.g.rustaceanvim = {
 	tools = {
 		-- Enable hover actions
 		hover_actions = {
-			auto_focus = true,
+			auto_focus = false,
 		},
 		-- Use neotest for running tests
 		test_executor = "neotest",

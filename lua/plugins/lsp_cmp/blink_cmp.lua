@@ -36,7 +36,7 @@ return {
 						lsp = {
 							enabled = true,
 							actions = true,
-							hover = true,
+							hover = false,
 							completion = true,
 						},
 					})
