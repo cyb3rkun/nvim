@@ -29,12 +29,12 @@ local keymaps = function(client, bufnr)
 	})
 
 	-- NOTE: Keymap to go to references
-	keymap(
-		"n",
-		"<leader>gr",
-		require("telescope.builtin").lsp_references,
-		{ buffer = bufnr, desc = "[G]oto [R]eferences" }
-	)
+	-- keymap(
+	-- 	"n",
+	-- 	"<leader>gr",
+	-- 	require("telescope.builtin").lsp_references,
+	-- 	{ buffer = bufnr, desc = "[G]oto [R]eferences" }
+	-- )
 
 	-- NOTE: keymap to go to implementation
 	keymap("n", "<leader>gI", vim.lsp.buf.implementation, {
@@ -49,20 +49,20 @@ local keymaps = function(client, bufnr)
 	})
 
 	-- NOTE: show lsp document symbols in telescope UI
-	keymap(
-		"n",
-		"<leader>ds",
-		require("telescope.builtin").lsp_document_symbols,
-		{ buffer = bufnr, desc = "[D]ocument [S]ymbols" }
-	)
+	-- keymap(
+	-- 	"n",
+	-- 	"<leader>ds",
+	-- 	require("telescope.builtin").lsp_document_symbols,
+	-- 	{ buffer = bufnr, desc = "[D]ocument [S]ymbols" }
+	-- )
 
 	-- NOTE: show lsp dynamic symbols in telescope UI
-	keymap(
-		"n",
-		"<leader>ws",
-		require("telescope.builtin").lsp_dynamic_workspace_symbols,
-		{ buffer = bufnr, desc = "[W]orkspace [S]ymbols" }
-	)
+	-- keymap(
+	-- 	"n",
+	-- 	"<leader>ws",
+	-- 	require("telescope.builtin").lsp_dynamic_workspace_symbols,
+	-- 	{ buffer = bufnr, desc = "[W]orkspace [S]ymbols" }
+	-- )
 
 	-- NOTE: add a workspace folder
 	keymap(
