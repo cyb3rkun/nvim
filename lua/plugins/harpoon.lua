@@ -9,6 +9,7 @@ return {
 		local harpoon = require("harpoon")
 		harpoon:setup({})
 		local Path = require("plenary").path
+		-- TODO: implement snack picker for harpoon hooks
 
 		local function toggle_telescope(harpoon_files)
 			local cb_idx = 1
