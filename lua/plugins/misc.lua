@@ -33,17 +33,33 @@ return {
 			event = "VeryLazy",
 		},
 		{
-			"eero-lehtinen/oklch-color-picker.nvim",
-			event = "VeryLazy",
-			opts = {},
-			keys = {
-				{
-					"<localleader>v",
-					"<cmd>ColorPickOklch<cr>",
-					desc = "Color pick Under the cursor",
-				},
+			"nvzone/minty",
+			cmd = { "Shades", "Huefy" },
+			dependencies = {
+				"nvzone/volt",
+				lazy = true,
 			},
 		},
+		{
+			"nvzone/typr",
+			dependencies = {
+				"nvzone/volt",
+			},
+			opts = {},
+			cmd = { "Typr", "TyprStats" },
+		},
+		-- {
+		-- 	"eero-lehtinen/oklch-color-picker.nvim",
+		-- 	event = "VeryLazy",
+		-- 	opts = {},
+		-- 	keys = {
+		-- 		{
+		-- 			"<localleader>v",
+		-- 			"<cmd>ColorPickOklch<cr>",
+		-- 			desc = "Color pick Under the cursor",
+		-- 		},
+		-- 	},
+		-- },
 		{
 			"mbbill/undotree",
 			config = function()
@@ -180,9 +196,9 @@ return {
 			"sindrets/diffview.nvim", -- optional - Diff integration
 
 			-- Only one of these is needed.
-			"nvim-telescope/telescope.nvim", -- optional
+			-- "nvim-telescope/telescope.nvim", -- optional
 			"ibhagwan/fzf-lua", -- optional
-			"echasnovski/mini.pick", -- optional
+			-- "echasnovski/mini.pick", -- optional
 		},
 		config = true,
 	},
