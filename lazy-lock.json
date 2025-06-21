@@ -63,5 +63,5 @@
   "undotree": { "branch": "master", "commit": "b951b87b46c34356d44aa71886aecf9dd7f5788a" },
   "vim-tmux-navigator": { "branch": "master", "commit": "412c474e97468e7934b9c217064025ea7a69e05e" },
   "virt-column.nvim": { "branch": "master", "commit": "b87e3e0864211a32724a2ebf3be37e24e9e2fa99" },
-  "wezterm-types": { "branch": "main", "commit": "c3f19654c0cf6d1c8df7e2b2439ae3e62be9be6a" }
+  "wezterm-types": { "branch": "main", "commit": "bba4eacfdce545a9d5c29c69d20bbb9c90189224" }
 }
