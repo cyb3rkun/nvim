@@ -54,7 +54,8 @@ return {
 
 		vim.api.nvim_set_hl(0, "CursorLine", {
 			underline = true,
-			-- fg = "#050505"
+			-- fg = "#2b2b2b"
+			--
 		})
 		vim.api.nvim_set_hl(0, "ColorColumn", {
 			bg = nil,
