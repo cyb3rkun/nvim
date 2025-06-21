@@ -16,7 +16,9 @@ return {
 			-- opts = {}
 		},
 	},
-	opts = nil,
+	opts = {
+		inlay_hints = {enabled = true},
+	},
 
 	config = function()
 		local lsp = require("lspconfig")
@@ -42,6 +44,10 @@ return {
 
 				local keymaps = require("config.lsp_mappings")
 				keymaps(client, bufnr)
+
+				-- if client.server_capabilities.inlayHintProvider then
+				-- 	vim.lsp.inlay_hint.enable(true)
+				-- end
 
 				vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
 					vim.lsp.buf.format()
