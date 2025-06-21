@@ -37,9 +37,7 @@ autocmd({ "VimEnter", "DirChanged" }, {
 		}
 
 		for _, root_file_path in ipairs(root_file_pattern) do
-			print("looking for: [" .. root_file_path .. "]")
 			local file_path = current_working_directory .. root_file_path
-			print(file_path)
 
 			if vim.fn.filereadable(file_path) == 1 and not server_started then
 				print("Found Godot Project root pattern... Starting LSP")
