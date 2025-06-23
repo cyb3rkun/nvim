@@ -1,34 +1,111 @@
----@diagnostic disable: undefined-global
+local function copy_action(_, item)
+	-- require snacks to have better lsp and diagnostics
+	require("snacks")
+	local modify = vim.fn.fnamemodify
+
+	local filepath = item.file
+	local filename = modify(filepath, ":t")
+
+	local results = {
+		filepath,
+		modify(filepath, ":."),
+		modify(filepath, ":~"),
+		filename,
+		modify(filename, ":r"),
+		modify(filename, ":e"),
+	}
+
+	local items = {
+		"Absolute path: " .. results[1],
+		"Relative Path (CWD): " .. results[2],
+		"Path relative to HOME: " .. results[3],
+		"Filename: " .. results[4],
+		-- "Filename without extension: " .. results[5],
+		-- "Extension of the filename: " .. results[6],
+	}
+
+	-- if it's a file then add extra options
+	if vim.fn.isdirectory(filepath) == 0 then
+		vim.list_extend(items, {
+			"Basename: " .. results[5],
+			"Extension: " .. results[6],
+		})
+	end
+
+	vim.ui.select(items, {
+		prompt = "Select Copy Operation",
+	}, function(choice, i)
+		if not choice then
+			vim.notify("Selection Cancelled")
+			return
+		end
+		if not i then
+			vim.notify("Invalid Selection")
+			return
+		end
+		local result = results[i]
+		vim.fn.setreg('"', result)
+		vim.notify("Copied: " .. result)
+	end)
+end
+-- -@diagnostic disable: undefined-global
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	-- -@type snacks.Config
+	---@type snacks.Config
 	opts = {
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
 		bigfile = { enabled = true },
-		-- dashboard = { enabled = true },
-		explorer = { enabled = true },
-		-- indent = { enabled = true },
+		explorer = { enabled = true, auto_close = true },
 		input = { enabled = true },
+		notifier = {
+			enabled = true,
+			top_down = true,
+			level = vim.log.levels.TRACE
+		},
+		notify = { enabled = true },
 		picker = {
 			enabled = true,
+			ui_select = true,
+			sources = {
+				explorer = {
+					win = {
+						list = {
+							keys = {
+								["<leader>c"] = "copy_path",
+							},
+						},
+					},
+					actions = {
+						copy_path = copy_action,
+					},
+				},
+			},
+		},
+		---@class snacks.indent.Config
+		indent = {
+			enabled = true,
+			priority = 1,
+			animate = {
+				enabled = false,
+			},
+			scope = {
+				enabled = true,
+				underline = true,
+				hl = "SnacksIndentScope",
+			},
+			hl = "SnacksIndent8",
 		},
 		-- notifier = { enabled = true },
 		quickfile = { enabled = true },
-		scope = { enabled = true },
-		-- scroll = { enabled = true },
-		statuscolumn = { enabled = true },
-		-- words = { enabled = true },
+		-- statuscolumn = { enabled = true },
+		words = { enabled = true, debounce = 80 },
+		lazygit = { enabled = true, configure = true },
+
 		image = { enabled = true },
-		---@class snacks.dashboard.Config
-		---@field enabled? boolean
-		---@diagnostic disable-next-line: undefined-doc-name
-		---@field sections snacks.dashboard.Section
-		---@diagnostic disable-next-line: undefined-doc-name
-		---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
 		dashboard = {
 			sections = {
 				{ section = "header" },
@@ -139,6 +216,42 @@ return {
 		},
 	},
 	keys = {
+		-- lazygit
+		{
+			"<leader>lg",
+			function()
+				Snacks.lazygit.open()
+			end,
+			desc = "Lazy git",
+		},
+		-- Words
+		{
+			"<leader>w",
+			function()
+				if Snacks.words.is_enabled() then
+					Snacks.words.disable()
+					return
+				end
+				Snacks.words.enable()
+			end,
+			desc = "toggle snacks.words on and off",
+		},
+		{
+			"<localleader>j",
+			function()
+				print("hello world")
+				Snacks.words.jump(1, true)
+			end,
+			desc = "Go to Previous Snacks Word!",
+		},
+		{
+			"<localleader>k",
+			function()
+				print("hello world")
+				Snacks.words.jump(-1, true)
+			end,
+			desc = "Go to next Snacks Word!",
+		},
 		-- Top Pickers & Explorer
 		{
 			";<space>",
@@ -148,21 +261,7 @@ return {
 			desc = "Smart Find Files",
 		},
 		{
-			";,",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			";/",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
-			";:",
+			"<leader>:",
 			function()
 				Snacks.picker.command_history()
 			end,
@@ -176,9 +275,10 @@ return {
 			desc = "Notification History",
 		},
 		{
-			";e",
+			"<leader>e",
 			function()
-				Snacks.explorer()
+				---@diagnostic disable-next-line: missing-fields
+				Snacks.explorer({})
 			end,
 			desc = "File Explorer",
 		},
@@ -193,17 +293,11 @@ return {
 		{
 			";f",
 			function()
-				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+				Snacks.picker.files({ --[[ cwd = vim.fn.stdpath("config") ]]
+				})
 			end,
 			desc = "Find Config File",
 		},
-		-- {
-		-- 	";ff",
-		-- 	function()
-		-- 		Snacks.picker.files()
-		-- 	end,
-		-- 	desc = "Find Files",
-		-- },
 		{
 			";g",
 			function()
