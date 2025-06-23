@@ -64,7 +64,7 @@ return {
 				liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
 			end
 
-			print(liblldb_path)
+			-- print(liblldb_path)
 			local cfg = require("rustaceanvim.config")
 			return {
 				dap = {
