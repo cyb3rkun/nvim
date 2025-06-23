@@ -20,8 +20,6 @@ local function copy_action(_, item)
 		"Relative Path (CWD): " .. results[2],
 		"Path relative to HOME: " .. results[3],
 		"Filename: " .. results[4],
-		-- "Filename without extension: " .. results[5],
-		-- "Extension of the filename: " .. results[6],
 	}
 
 	-- if it's a file then add extra options
@@ -64,7 +62,7 @@ return {
 		notifier = {
 			enabled = true,
 			top_down = true,
-			level = vim.log.levels.TRACE
+			level = vim.log.levels.TRACE,
 		},
 		notify = { enabled = true },
 		picker = {
@@ -278,7 +276,7 @@ return {
 			"<leader>e",
 			function()
 				---@diagnostic disable-next-line: missing-fields
-				Snacks.explorer({})
+				Snacks.explorer()
 			end,
 			desc = "File Explorer",
 		},
