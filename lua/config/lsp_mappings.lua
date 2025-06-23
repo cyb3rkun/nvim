@@ -98,15 +98,6 @@ local keymaps = function(client, bufnr)
 		buffer = bufnr,
 		desc = "Hover Documentation",
 	})
-	-- keymap("n", "x", function()
-	-- 	print("hello")
-	-- 	require("noice.lsp.hover").on_hover()
-	-- end,
-	-- 	{
-	-- 		desc = "Hover over current symbol"
-	-- 	}
-	-- )
-
 	-- NOTE: show signature help for what is currently under the cursor
 	keymap("n", "<leader>k", vim.lsp.buf.signature_help, {
 		buffer = bufnr,
