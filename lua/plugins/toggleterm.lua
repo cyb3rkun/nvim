@@ -15,26 +15,6 @@ return {
 			float_opts = {
 				border = "curved", -- Only relevant if using 'float' direction
 			},
-			on_open = function(_)
-				-- local manager = require("neo-tree.sources.manager")
-				-- -- local ntree = require("neo-tree")
-				-- local renderer = require("neo-tree.ui.renderer")
-				-- local state = manager.get_state("filesystem")
-				-- local ntree_open = renderer.window_exists(state)
-				-- if ntree_open == true then
-				-- 	vim.defer_fn(function()
-				-- 		local cmd = string.format("Neotree toggle")
-				-- 		print("toggling ntree!")
-				-- 		-- vim.notify("toggling ntree", vim.log.levels.TRACE, {})
-				-- 		vim.cmd(cmd)
-				-- 		vim.cmd(cmd)
-				-- 		vim.cmd("wincmd p")
-				--
-				-- 		-- local cmd_retoggle = string.format("Neotree toggle")
-				-- 		-- vim.cmd(cmd_retoggle)
-				-- 	end, 100)
-				-- end
-			end,
 		})
 
 		vim.keymap.set("n", "<localleader>t", function()
