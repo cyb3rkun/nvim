@@ -29,10 +29,6 @@ return {
 			},
 		},
 		{
-			"stevearc/dressing.nvim",
-			event = "VeryLazy",
-		},
-		{
 			"nvzone/minty",
 			cmd = { "Shades", "Huefy" },
 			dependencies = {
@@ -85,7 +81,7 @@ return {
 			end,
 		},
 	},
-	{
+	--[[ {
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		main = "ibl",
@@ -138,7 +134,7 @@ return {
 		end,
 		-- config = function() end,
 		-- config = function() end,
-	},
+	}, ]]
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
