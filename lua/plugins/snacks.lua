@@ -82,6 +82,7 @@ return {
 					},
 				},
 			},
+			
 		},
 		---@class snacks.indent.Config
 		indent = {
@@ -272,14 +273,14 @@ return {
 			end,
 			desc = "Notification History",
 		},
-		{
-			"<leader>e",
-			function()
-				---@diagnostic disable-next-line: missing-fields
-				Snacks.explorer()
-			end,
-			desc = "File Explorer",
-		},
+		-- {
+		-- 	"<leader>e",
+		-- 	function()
+		-- 		---@diagnostic disable-next-line: missing-fields
+		-- 		Snacks.explorer()
+		-- 	end,
+		-- 	desc = "File Explorer",
+		-- },
 		-- find
 		{
 			";b",
@@ -547,11 +548,13 @@ return {
 		},
 		-- LSP
 		{
-			"<leader>gd",
+			";gd",
 			function()
 				Snacks.picker.lsp_definitions()
 			end,
 			desc = "Goto Definition",
+			nowait = true,
+			noremap = true
 		},
 		{
 			"<leader>gD",
