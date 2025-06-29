@@ -44,6 +44,7 @@ vim.opt.termguicolors = true
 -- top or bottom.
 -- WARN: does not work near end or beginning of file
 vim.opt.scrolloff = 15
+vim.opt.sidescrolloff = 0
 
 vim.opt.cursorline = true
 vim.g.rust_recommended_style = 0
