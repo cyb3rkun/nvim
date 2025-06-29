@@ -17,7 +17,7 @@ return {
 		},
 	},
 	opts = {
-		inlay_hints = {enabled = true},
+		inlay_hints = { enabled = true },
 	},
 
 	config = function()
@@ -89,7 +89,7 @@ return {
 		})
 
 		local servers = {
-			"lua_ls",
+			-- "lua_ls",
 			"jdtls",
 			"gdscript",
 			-- "csharp_ls",
@@ -116,6 +116,29 @@ return {
 			})
 		end
 
+		lsp.lua_ls.setup({
+			settings = {
+				Lua = {
+					runtime = {
+						version = "Lua 5.4",
+						path = {
+							"?.lua",
+							"?/init.lua",
+							vim.fn.expand("~/.luarocks/share/lua/5.4/?.lua"),
+							vim.fn.expand("~/.luarocks/share/lua/5.4/?/init.lua"),
+							"/usr/share/5.4/?.lua",
+							"/usr/share/lua/5.4/?/init.lua",
+						},
+					},
+					workspace = {
+						library = {
+							vim.fn.expand("~/.luarocks/share/lua/5.4"),
+							"/usr/share/lua/5.4",
+						},
+					},
+				},
+			},
+		})
 		lsp.bacon_ls.setup({
 			init_options = {
 				updateOnSave = true,
