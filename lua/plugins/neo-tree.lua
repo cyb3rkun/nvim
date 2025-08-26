@@ -61,6 +61,8 @@ return {
 		})
 
 		-- NOTE: Keymaps defined here:
-		vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle<CR>")
+		vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle left<CR>")
+		vim.keymap.set("n", "<leader>fe", "<cmd> Neotree float<CR>")
+		vim.keymap.set("n", "<leader>le", "<cmd> Neotree focus<CR>")
 	end,
 }
