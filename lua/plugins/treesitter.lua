@@ -110,19 +110,24 @@ return {
 						a = { "@parameter.outer", "@argument.outer" },
 						i = { "@parameter.inner", "@argument.inner" },
 					}),
-					i = ts_spec({
-						a = { "@condpitional.outer" },
-						i = { "@conditional.inner" },
-					}),
-					-- b = ts_spec({
-					-- 	a = { "@block.outer"},
-					-- 	i = { "@block.inner"}
+					-- i = ts_spec({
+					-- 	a = { "@condpitional.outer" },
+					-- 	i = { "@conditional.inner" },
 					-- }),
+					k = ts_spec({
+						a = { "@block.outer"},
+						i = { "@block.inner"}
+					}),
 					-- don't know if this works ...
 					["="] = ts_spec({
 						a = { "@assignment.outer" },
 						i = { "@assignment.inner" },
 						-- l = { "@assignment.lhs"}
+					}),
+					A = ts_spec({
+						a = {"@assignment.lhs"},
+						i = {"@assignment.rhs"}
+
 					}),
 					f = ts_spec({
 						a = { "@call.outer" },
@@ -136,7 +141,6 @@ return {
 					g = ts_spec({
 						a = { "@comment.outer" },
 						i = { "@comment.inner" },
-						-- there is no comment.inner
 					}),
 					s = ts_spec({
 						a = { "@statement.outer" },
@@ -160,7 +164,7 @@ return {
 					}),
 				},
 				n_lines = 300,
-				search_method = "cover_or_nearest",
+				search_method = "cover_or_next",
 				silent = false,
 			})
 		end,
