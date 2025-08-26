@@ -1,0 +1,6 @@
+tab_spaces = 6
+hard_tabs = true
+indent_style = "block"
+function_arguments = "block"
+attr_fn_like_width = 60
+max_width = 79
