@@ -134,8 +134,8 @@ return {
 					["<Up>"] = { "select_prev", "fallback" },
 					["<Down>"] = { "select_next", "fallback" },
 
-					["<C-b>"] = { "scroll_documentation_up", "fallback" },
-					["<C-f>"] = { "scroll_documentation_down", "fallback" },
+					["<C-Up>"] = { "scroll_documentation_up" },
+					["<C-Down>"] = { "scroll_documentation_up" },
 
 					["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
 				},

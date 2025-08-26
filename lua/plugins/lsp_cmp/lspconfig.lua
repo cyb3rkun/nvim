@@ -108,6 +108,7 @@ return {
 			-- "neorg-interim-ls",
 		}
 
+
 		-- NOTE: Basic LSP setup
 		for _, ls in ipairs(servers) do
 			lsp[ls].setup({
@@ -115,6 +116,8 @@ return {
 				-- on_attach = lsp_attach,
 			})
 		end
+
+		-- lsp.gdscript.setup({capabilities = vim.lsp.protocol.make_client_capabilities()})
 
 		lsp.lua_ls.setup({
 			settings = {
