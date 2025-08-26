@@ -44,18 +44,18 @@ return {
 			opts = {},
 			cmd = { "Typr", "TyprStats" },
 		},
-		-- {
-		-- 	"eero-lehtinen/oklch-color-picker.nvim",
-		-- 	event = "VeryLazy",
-		-- 	opts = {},
-		-- 	keys = {
-		-- 		{
-		-- 			"<localleader>v",
-		-- 			"<cmd>ColorPickOklch<cr>",
-		-- 			desc = "Color pick Under the cursor",
-		-- 		},
-		-- 	},
-		-- },
+		{
+			"eero-lehtinen/oklch-color-picker.nvim",
+			event = "VeryLazy",
+			opts = {},
+			keys = {
+				{
+					"<localleader>v",
+					"<cmd>ColorPickOklch<cr>",
+					desc = "Color pick Under the cursor",
+				},
+			},
+		},
 		{
 			"mbbill/undotree",
 			config = function()
@@ -81,60 +81,6 @@ return {
 			end,
 		},
 	},
-	--[[ {
-		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		main = "ibl",
-		opts = function()
-			local highlight = {
-				"IblOne",
-				"IblTwo",
-				"IblThree",
-				"IblFour",
-				"IblFive",
-				"IblSix",
-				"IblSeven",
-			}
-			local whitespace_hl = {
-				"ColorColumn",
-				"Whitespace",
-			}
-			local hooks = require("ibl.hooks")
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "IblOne", { fg = "#ff8f8f" })
-				vim.api.nvim_set_hl(0, "IblTwo", { fg = "#ff6666" })
-				vim.api.nvim_set_hl(0, "IblThree", { fg = "#ff3d3d" })
-				vim.api.nvim_set_hl(0, "IblFour", { fg = "#ff1414" })
-				vim.api.nvim_set_hl(0, "IblFive", { fg = "#c20000" })
-				vim.api.nvim_set_hl(0, "IblSix", { fg = "#990000" })
-				vim.api.nvim_set_hl(0, "IblSeven", { fg = "#700000" })
-			end)
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "One", { bg = "#1b1c30" })
-				vim.api.nvim_set_hl(0, "Two", { bg = "#2b2c47" })
-			end)
-			return {
-				indent = {
-					highlight = highlight,
-				},
-				scope = {
-					enabled = false,
-					show_start = true,
-					show_end = true,
-					-- include = {
-					-- 	node_type = {
-					-- 		["*"] = { "*" },
-					-- 	},
-					-- },
-				},
-				whitespace = {
-					-- highlight = whitespace_hl
-				},
-			}
-		end,
-		-- config = function() end,
-		-- config = function() end,
-	}, ]]
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
@@ -191,7 +137,8 @@ return {
 			"nvim-lua/plenary.nvim", -- required
 			"sindrets/diffview.nvim", -- optional - Diff integration
 
-			-- Only one of these is needed.
+			-- NOTE: Only one of these is needed.
+
 			-- "nvim-telescope/telescope.nvim", -- optional
 			"ibhagwan/fzf-lua", -- optional
 			-- "echasnovski/mini.pick", -- optional
