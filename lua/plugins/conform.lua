@@ -6,8 +6,9 @@ return {
 	config = function()
 		local conform = require("conform") -- NOTE: this should not be necessary
 
-		conform .formatters.beautysh = {
-			prepend_args = {"-t"}
+		local formatter_config_dir = vim.fn.stdpath("config") .. "/formatters"
+		conform.formatters.beautysh = {
+			prepend_args = { "-t" },
 		}
 		-- NOTE: here we run the setup function
 		conform.setup({
@@ -29,6 +30,20 @@ return {
 				bash = { "beautysh" },
 				sh = { "beautysh" },
 			},
+			formatters = {
+				rustfmt = {
+					prepend_args = {
+						"--config-path",
+						formatter_config_dir .. "/rustfmt.toml",
+					},
+				},
+				["clang-format"] = {
+					command = vim.fn.stdpath("data") .. "/mason/bin/clang-format",
+					prepend_args = {
+						"-style=file:" .. formatter_config_dir .. "/clang-format",
+					},
+				},
+			},
 
 			-- NOTE: this will cause it to format a file
 			-- when you save
@@ -44,7 +59,7 @@ return {
 		vim.keymap.set(
 			{ "n", "v" },
 			"<leader>mp",
-			function() -- NOTE: the keymap works in n and v modes and is <leader>mp
+			function()
 				-- NOTE: here we call the format function from conform and pass it our formatting options
 				conform.format({
 					lsp_fallback = true,
