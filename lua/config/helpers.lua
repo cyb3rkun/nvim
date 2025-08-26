@@ -28,10 +28,10 @@ run_formatter(
 	{
 		"/home/cyb3rkun/.local/share/nvim/mason/bin/clang-format",
 		"--assume-filename=",
-		"/home/cyb3rkun/Documents/esp32/c3/tft_wifi_bt_hacking/.clang-format",
+		"/home/cyb3rkun/.config/nvim/formatters/clang-format",
 	},
-	"/home/cyb3rkun/Documents/esp32/c3/tft_wifi_bt_hacking/",
-	read_file("/home/cyb3rkun/Documents/esp32/c3/tft_wifi_bt_hacking/main/tft_wifi_bt_hacking.c")
+	"/home/cyb3rkun/Dev/cpp/playground/",
+	read_file("/home/cyb3rkun/Dev/cpp/playground/src/main.cpp")
 )
 -- To test a non-stdin formatter
 -- run_formatter({ "formatter_command", "arg1", "arg2" }, "/path/to/cwd")
