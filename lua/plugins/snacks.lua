@@ -93,7 +93,7 @@ return {
 			},
 			scope = {
 				enabled = true,
-				underline = true,
+				underline = false,
 				hl = "SnacksIndentScope",
 			},
 			hl = "SnacksIndent8",
@@ -108,9 +108,6 @@ return {
 		dashboard = {
 			sections = {
 				{ section = "header" },
-				-- {
-				-- 	pane = 2,
-				-- },
 				{
 					-- pane = 2,
 					section = "keys",
@@ -120,9 +117,6 @@ return {
 					padding = 1,
 					-- gap = 1,
 				},
-				-- {
-				-- 	pane = 2,
-				-- },
 				{
 					-- pane = 2,
 					icon = " ",
@@ -131,9 +125,6 @@ return {
 					indent = 3,
 					padding = 1,
 				},
-				-- {
-				-- 	pane = 2,
-				-- },
 				{
 					-- pane = 2,
 					section = "recent_files",
@@ -586,7 +577,7 @@ return {
 			desc = "Goto T[y]pe Definition",
 		},
 		{
-			"<leader>ss",
+			"<leader>ds",
 			function()
 				Snacks.picker.lsp_symbols()
 			end,
