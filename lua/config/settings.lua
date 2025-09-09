@@ -59,5 +59,4 @@ vim.diagnostic.config({
 
 })
 
--- NOTE: make all borders rounded
--- vim.o.winborder = "rounded"
+-- inlay hints for type inferences and other

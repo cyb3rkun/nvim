@@ -100,6 +100,7 @@ return {
 			"eslint",
 			"ruff",
 			"omnisharp",
+			"gopls"
 			-- "bacon-ls"
 			-- "buf",
 			-- "black"

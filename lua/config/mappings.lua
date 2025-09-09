@@ -24,7 +24,6 @@ end, { noremap = true })
 
 Keymap("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss Noice Messages" })
 
-
 -- NOTE: Move visual selection up or down
 -- keymap("v", "J", ":m '>+1<CR>gv=gv")
 -- keymap("v", "K", ":m '<-2<CR>gv=gv")
@@ -36,9 +35,10 @@ Keymap("i", "<M-J>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 Keymap("v", "K", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 Keymap("v", "J", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 
-Keymap("n", "<leader>sl", function ()
+Keymap("n", "<leader>sl", function()
 	local current = vim.diagnostic.config().virtual_lines
 	vim.diagnostic.config({
-		virtual_lines = not current
+		virtual_lines = not current,
 	})
 end, { desc = "toggle virtual lines for Diagnostics" })
+

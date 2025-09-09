@@ -51,6 +51,9 @@ return {
 
 		vim.g.virtcolumn_char = "⎸"
 		vim.g.virtcolumn_priority = 0
+		-- / Inline Type hints!
+		vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#8a9fab", bg = "NONE" })
+		vim.lsp.inlay_hint.enable(true)
 
 		vim.api.nvim_set_hl(0, "CursorLine", {
 			underline = true,
