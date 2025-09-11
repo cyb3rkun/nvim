@@ -42,3 +42,6 @@ Keymap("n", "<leader>sl", function()
 	})
 end, { desc = "toggle virtual lines for Diagnostics" })
 
+Keymap("n", "<leader>h", function ()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)

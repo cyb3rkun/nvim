@@ -30,15 +30,15 @@ return {
 					"bash",
 					"gitignore",
 					"c",
-					"css",
+					-- "css",
 					"regex",
-					"norg",
+					-- "norg",
 					"rust",
-					"java",
+					-- "java",
 				},
 
 				highlight = {
-					enable = true,
+					enable = false,
 					additional_vim_regex_highlighting = { "markdown" },
 				},
 

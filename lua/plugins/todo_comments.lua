@@ -8,6 +8,7 @@ return {
 		sign_priority = 8,
 		keywords = {
 			NOTE = { icon = "", color = "#4c6850", alt = { "INFO" } },
-		}
+			DEP = { icon = "", color = "warning", alt = { "DEPRICATED" } },
+		},
 	},
 }

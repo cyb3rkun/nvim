@@ -4,31 +4,27 @@ local keymap = vim.keymap.set
 -- NOTE: Define a keymaps variable to store our keymaps as a function
 ---@diagnostic disable-next-line: unused-local
 local keymaps = function(client, bufnr)
-	-- NOTE: rename references throughout an entire file?
 	keymap("n", "<leader>rn", vim.lsp.buf.rename, {
 		buffer = bufnr,
 		desc = "[R]e[n]ame",
 	})
 
-	-- NOTE: Keymap to get code actions
 	keymap("n", "<leader>ca", vim.lsp.buf.code_action, {
 		buffer = bufnr,
 		desc = "[C]ode [A]ction",
 	})
 
-	-- NOTE: Keymap to go to definition
-	keymap("n", "<leader>gd", vim.lsp.buf.definition, {
+	keymap("n", "<leader>gd", vim.lsp.buf.document_symbol, {
 		buffer = bufnr,
 		desc = "[G]oto [D]efinition",
 	})
 
-	-- NOTE: Keymap to go to Declaration
 	keymap("n", "<leader>gD", vim.lsp.buf.declaration, {
 		buffer = bufnr,
 		desc = "[G]oto [D]eclaration",
 	})
 
-	-- NOTE: Keymap to go to references
+	-- DEP: replace with snacks
 	-- keymap(
 	-- 	"n",
 	-- 	"<leader>gr",
@@ -48,6 +44,7 @@ local keymaps = function(client, bufnr)
 		desc = "Type [D]efinition",
 	})
 
+	-- DEP: These keymaps have been replaced by snacks picker
 	-- NOTE: show lsp document symbols in telescope UI
 	-- keymap(
 	-- 	"n",
@@ -92,7 +89,7 @@ local keymaps = function(client, bufnr)
 	-- NOTE: show documentation for what is currently under the cursor
 	keymap("n", "K", function()
 		vim.lsp.buf.hover({
-			border = "rounded"
+			border = "rounded",
 		})
 	end, {
 		buffer = bufnr,
@@ -110,12 +107,13 @@ local keymaps = function(client, bufnr)
 		desc = "Go to previous [D]iagnostic message",
 	})
 	-- NOTE: toggle virtual lines for diagnostics
-	Keymap("n", "<leader>sl", function()
+	keymap("n", "<leader>sl", function()
 		local current = vim.diagnostic.config().virtual_lines
 		vim.diagnostic.config({
 			virtual_lines = not current,
 		})
 	end, { desc = "toggle virtual lines for Diagnostics" })
+
 	keymap("n", "[d", function()
 		vim.diagnostic.jump({ count = -1, float = true })
 	end, {
@@ -133,3 +131,4 @@ end
 
 -- NOTE: return the keymaps variabl function when this file is called
 return keymaps
+

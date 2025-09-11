@@ -345,13 +345,13 @@ return {
 			end,
 			desc = "Git Stash",
 		},
-		{
-			";gd",
-			function()
-				Snacks.picker.git_diff()
-			end,
-			desc = "Git Diff (Hunks)",
-		},
+		-- {
+		-- 	";gd",
+		-- 	function()
+		-- 		Snacks.picker.git_diff()
+		-- 	end,
+		-- 	desc = "Git Diff (Hunks)",
+		-- },
 		{
 			";gf",
 			function()
@@ -555,7 +555,7 @@ return {
 			desc = "Goto Declaration",
 		},
 		{
-			"<leader>gr",
+			";gr",
 			function()
 				Snacks.picker.lsp_references()
 			end,

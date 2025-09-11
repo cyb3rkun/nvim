@@ -52,6 +52,9 @@ vim.g.rust_recommended_style = 0
 -- [[Set Up Diagnostics]] --
 vim.diagnostic.config({
 	virtual_lines = true,
+	-- virtual_text = true,
+	severity_sort = true,
+
 	underline = true,
 	float = {
 		border = "rounded"
@@ -59,4 +62,4 @@ vim.diagnostic.config({
 
 })
 
--- inlay hints for type inferences and other
+

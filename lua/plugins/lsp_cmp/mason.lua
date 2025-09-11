@@ -26,22 +26,24 @@ return {
 		})
 
 		-- NOTE: Setup mason LSPCONFIG after mason
+		-- enable if you want lsps to be installed automatically.
+		-- I'd rather install them myself when needed
 		mason_lspconfig.setup({
 			automatic_enable = false,
 			ensure_installed = {
-				"lua_ls",
-				"jdtls",
-				-- "gdtoolkit",
-				"bashls",
-				"marksman",
-				"html",
-				"cssls",
-				"eslint",
-				"ruff",
-				"clangd",
-				"omnisharp",
-				"pylsp",
-				"biome", -- For JS, TS and other web languages
+				-- "lua_ls",
+				-- "jdtls",
+				-- -- "gdtoolkit",
+				-- "bashls",
+				-- "marksman",
+				-- "html",
+				-- "cssls",
+				-- "eslint",
+				-- -- "ruff",
+				-- "clangd",
+				-- "omnisharp",
+				-- -- "pylsp",
+				-- "biome", -- For JS, TS and other web languages
 			},
 			automatic_installation = true,
 		})

@@ -1,6 +1,14 @@
 tab_spaces = 6
 hard_tabs = true
+# use_small_heuristics = "off"
 indent_style = "block"
 function_arguments = "block"
-attr_fn_like_width = 60
-max_width = 79
+attr_fn_like_width = 72
+max_width = 72
+blank_lines_lower_bound = 1
+blank_lines_upper_bound = 2
+chain_width = 35
+# control_brace_style = "AlwaysSameLine"
+brace_style = "SameLineWhere"
+imports_layout = "vertical"
+reorder_imports = true

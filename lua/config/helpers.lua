@@ -24,14 +24,35 @@ end
 
 -- Edit these lines to match the values you see in your conform log file
 -- To test a stdin formatter
-run_formatter(
-	{
-		"/home/cyb3rkun/.local/share/nvim/mason/bin/clang-format",
-		"--assume-filename=",
-		"/home/cyb3rkun/.config/nvim/formatters/clang-format",
-	},
-	"/home/cyb3rkun/Dev/cpp/playground/",
-	read_file("/home/cyb3rkun/Dev/cpp/playground/src/main.cpp")
-)
+-- run_formatter(
+-- 	{
+-- 		"/home/cyb3rkun/.local/share/nvim/mason/bin/clang-format",
+-- 		"--assume-filename=",
+-- 		"/home/cyb3rkun/.config/nvim/formatters/clang-format",
+-- 	},
+-- 	"/home/cyb3rkun/Dev/cpp/playground/",
+-- 	read_file("/home/cyb3rkun/Dev/cpp/playground/src/main.cpp")
+-- )
 -- To test a non-stdin formatter
 -- run_formatter({ "formatter_command", "arg1", "arg2" }, "/path/to/cwd")
+
+gdshader = function()
+	vim.lsp.start({
+		name = "gdshader-lsp",
+		cmd = { "/home/cyb3rkun/.local/share/gdshader-lsp/gdshader-lsp" },
+		-- root_dir = vim.fn.getcwd(),
+		capabilities = vim.lsp.protocol.make_client_capabilities(),
+	})
+end
+
+Formatb = function()
+	require("conform").format({
+		lsp_fallback = true,
+		async = true,
+		timeout_ms = 500,
+	})
+end
+P = function(v)
+	print(vim.inspect(v))
+end
+
