@@ -1,0 +1,8 @@
+require("config.settings")
+require("config.helpers")
+require("config.globals")
+require("config.lazy")
+require("config.mappings")
+require("config.auto_commands")
+require("config.user_commands")
+require("config.lsp")
