@@ -11,6 +11,7 @@ vim.opt.undodir = vim.fn.expand("~/.local/state/nvim/undo/")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- vim.opt.hidden = true
 -- vim.opt.showmode = true
 
 -- NOTE: show the maximum line length that you don't want to exceed
