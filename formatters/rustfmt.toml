@@ -2,5 +2,7 @@ tab_spaces = 6
 hard_tabs = true
 indent_style = "block"
 function_arguments = "block"
+chain_width = 1
+force_multiline_blocks = true
 attr_fn_like_width = 60
 max_width = 79
