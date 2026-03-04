@@ -31,6 +31,7 @@ return {
 					"regex",
 					"rust",
 					"java",
+					"yaml"
 				},
 
 				highlight = {
