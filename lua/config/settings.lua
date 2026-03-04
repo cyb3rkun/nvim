@@ -25,9 +25,9 @@ vim.opt.colorcolumn = "72"
 vim.opt.statuscolumn = " %s%{v:relnum?v:relnum:v:lnum} "
 
 -- NOTE: set tab and indentation options tab width = 6
-vim.opt.tabstop = 6
-vim.opt.softtabstop = 6
-vim.opt.shiftwidth = 6
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- NOTE: set expand tab to true to use space indentation
 vim.opt.expandtab = false
