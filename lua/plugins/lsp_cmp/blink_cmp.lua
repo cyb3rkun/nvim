@@ -103,6 +103,7 @@ return {
 					"snippets",
 					"buffer",
 					"path",
+					"codecompanion",
 					"lazydev",
 				},
 				providers = {
