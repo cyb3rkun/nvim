@@ -39,6 +39,7 @@ local default_servers = {
 	"gopls",
 	"fish_lsp",
 	"qmlls",
+	"astro",
 	-- "rnix",
 	"nil_ls",
 	-- "bacon-ls"
@@ -59,5 +60,3 @@ vim.lsp.enable({ "lua_ls" })
 vim.lsp.enable({ "biome" })
 vim.lsp.enable({ "pylsp" })
 vim.lsp.enable({ "ast_grep" })
-
-print("LSP Module loaded!")

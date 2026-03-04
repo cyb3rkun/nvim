@@ -6,3 +6,4 @@ require("config.mappings")
 require("config.auto_commands")
 require("config.user_commands")
 require("config.lsp")
+
