@@ -11,10 +11,11 @@ return {
 			event = "VeryLazy",
 			config = function()
 				require("nvim-surround").setup({
-					keymaps = {
-						visual = "<M-s>",
-					},
+					-- keymaps = {
+					-- 	visual = "<M-s>",
+					-- },
 				})
+				vim.keymap.set("v","<M-s>", "<Plug>(nvim-surround-visual)")
 			end,
 		},
 		{
