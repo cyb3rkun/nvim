@@ -62,7 +62,7 @@ return {
 		notifier = {
 			enabled = true,
 			top_down = true,
-			level = vim.log.levels.TRACE,
+			level = vim.log.levels.INFO,
 		},
 		notify = { enabled = true },
 		picker = {
