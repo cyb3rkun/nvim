@@ -25,7 +25,9 @@ vim.g.rustaceanvim = {
 					allFeatures = true, -- Enable all Cargo features
 					buildScripts = { enable = true },
 				},
-				checkOnSave = {
+				checkOnSave = true,
+
+				check = {
 					command = "clippy", -- Use clippy for linting
 				},
 				procMacro = { enable = true }, -- Enable proc-macro support
