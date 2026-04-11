@@ -25,9 +25,10 @@ vim.lsp.inlay_hint.enable(true)
 vim.lsp.config("*", { capabilities = capabilities })
 
 local default_servers = {
-	-- "lua_ls",
+	"lua_ls",
 	"jdtls",
-	-- "gdscript",
+	"gdscript",
+	"clangd",
 	-- "csharp_ls",
 	"bashls",
 	"marksman",
@@ -42,11 +43,12 @@ local default_servers = {
 	"astro",
 	-- "rnix",
 	"nil_ls",
+	"fish-lsp",
 	-- "bacon-ls"
 	-- "buf",
 	-- "black"
-	-- "pylsp",
-	-- "biome", -- For JS, TS and other web languages
+	"pylsp",
+	"biome", -- For JS, TS and other web languages
 	-- "neorg-interim-ls",
 }
 
@@ -54,9 +56,3 @@ for _, s in ipairs(default_servers) do
 	vim.lsp.enable({ s })
 end
 
-vim.lsp.enable({ "gdscript" })
-vim.lsp.enable({ "clangd" })
-vim.lsp.enable({ "lua_ls" })
-vim.lsp.enable({ "biome" })
-vim.lsp.enable({ "pylsp" })
-vim.lsp.enable({ "ast_grep" })

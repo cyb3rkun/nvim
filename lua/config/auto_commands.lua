@@ -50,60 +50,44 @@ local server_started
 local server_address
 autocmd({ "VimEnter", "DirChanged" }, {
 	callback = function()
-		print("found GDProject")
-		-- change the order of these to change the priority
 		local root_pattern = {
 			".gdproject",
 			"project.godot",
 		}
-		local root_file = nil
-		local root_dir = nil
+		local found = vim.fs.find(root_pattern, { upward = true, stop = vim.env.HOME })[1]
+		if not found then return end
 
-		for _, pattern in ipairs(root_pattern) do
-			local found = vim.fs.find(pattern, { upward = true, stop = vim.env.HOME })
+		local root_dir = vim.fs.dirname(found)
+		local addr = root_dir .. "/godothost"
 
-			if #found > 0 then
-				vim.notify("Found GDproject")
-				root_file = found[1]
-				root_dir = vim.fs.dirname(root_file)
-				break
-			end
-		end
-
-		if root_dir and not server_started then
-			server_address = root_dir .. "/godothost"
-			--safety
-			if not root_file then return end
-
-			if root_file:match("%.gdproject$") then
-				local f = io.open(root_file, "r")
-				if f then
-					local line = f:read("*l")
-					f:close()
-					print("Project_File: " .. line)
-					local name = line:match("=%s*(%S+)") or line:match("(%S+)")
-					if name then
-						print(name)
-						server_address = root_dir .. "/" .. name .. "/godothost"
-					end
+		if found:match("%.gdproject$") then
+			local f = io.open(found, "r")
+			if f then
+				local line = f:read("*l")
+				f:close()
+				local project_folder = line:match("=%s*(%S+)") or line:match("(%S+)")
+				if project_folder then
+					addr = root_dir .. "/" .. project_folder .. "/godothost"
 				end
 			end
 		end
-		print(server_address)
 
-		if server_started then
-			vim.fn.serverstop(server_address)
-		else
+		if server_address and server_address ~= addr then
+			pcall(vim.fn.serverstop, server_address)
+		end
+
+		server_address = addr
+		if not server_started or server_address ~= addr then
 			local success = pcall(vim.fn.serverstart, server_address)
 			if success then
-				vim.notify("Godot Server started @: " .. server_address)
+				vim.notify("Godot Server started @: " .. server_address, vim.log.levels.INFO)
 				server_started = true
 			end
 		end
 	end,
 })
 autocmd("VimLeave", {
-	callback = function ()
+	callback = function()
 		if server_started then
 			vim.fn.serverstop(server_address)
 		end
