@@ -64,14 +64,14 @@ return {
 			require("nvim-ts-autotag").setup({
 				opts = {
 					enable_close = true,
-					enable_renable = true,
+					enable_rename = true,
 					enable_close_on_slash = true,
 				},
 			})
 		end,
 	},
 	{
-		"echasnovski/mini.ai",
+		"nvim-mini/mini.ai",
 		version = "*",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
@@ -94,6 +94,10 @@ return {
 				},
 
 				custom_textobjects = {
+					r = ts_spec({
+						a = "@attribute.outer",
+						i = "@attribute.inner",
+					}),
 					m = ts_spec({
 						a = "@function.outer",
 						i = "@function.inner",
@@ -106,13 +110,9 @@ return {
 						a = { "@parameter.outer", "@argument.outer" },
 						i = { "@parameter.inner", "@argument.inner" },
 					}),
-					-- i = ts_spec({
-					-- 	a = { "@condpitional.outer" },
-					-- 	i = { "@conditional.inner" },
-					-- }),
 					k = ts_spec({
-						a = { "@block.outer"},
-						i = { "@block.inner"}
+						a = { "@block.outer" },
+						i = { "@block.inner" }
 					}),
 					-- don't know if this works ...
 					["="] = ts_spec({
@@ -121,8 +121,8 @@ return {
 						-- l = { "@assignment.lhs"}
 					}),
 					A = ts_spec({
-						a = {"@assignment.lhs"},
-						i = {"@assignment.rhs"}
+						a = { "@assignment.lhs" },
+						i = { "@assignment.rhs" }
 
 					}),
 					f = ts_spec({
@@ -142,17 +142,17 @@ return {
 						a = { "@statement.outer" },
 						i = { "@statement.inner" },
 					}),
-					t = ts_spec({
-						a = { "@type.outer" },
-						i = { "@type.inner" },
+					T = ts_spec({
+						a = { "@type.outer", "@type" },
+						i = { "@type.inner", "@type" },
 					}),
 					e = ts_spec({
 						a = { "@enum" },
 						i = { "@enum" },
 					}),
-					N = ts_spec({
-						a = { "@name" },
-						i = { "@name" },
+					j = ts_spec({
+						a = { "@tag_name", "@name" },
+						i = { "@tag_name", "@name" },
 					}),
 					v = ts_spec({
 						a = { "@value.outer" },
