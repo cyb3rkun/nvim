@@ -27,41 +27,40 @@ return {
 				width = 25,
 				mappings = {
 					["c"] = function(state)
-						---@diagnostic disable-next-line: undefined-field
 						local node = state.tree:get_node()
 						local filepath = node:get_id()
 						local filename = node.name
 						local modify = vim.fn.fnamemodify
 
-						local results = {
-							filepath,
-							modify(filepath, ":."),
-							modify(filepath, ":~"),
-							filename,
-							modify(filename, ":r"),
-							modify(filename, ":e"),
+						local options = {
+							["Absolute path"] = filepath,
+							["Relative path (CWD)"] = modify(filepath, ":."),
+							["Path relative to HOME"] = modify(filepath, ":~"),
+							["Filename"] = filename,
+							["Filename without extension"] = modify(filename, ":r"),
+							["Extension"] = modify(filename, ":e"),
 						}
 
-						vim.ui.select(
-							{
-								"Absolute path: " .. results[1],
-								"Relative Path (CWD): " .. results[2],
-								"Path relative to HOME: "
-									.. results[3],
-								"Filename: " .. results[4],
-								"Filename without extension: "
-									.. results[5],
-								"Extension of the filename: "
-									.. results[6],
+						local sorted_keys = {
+							"Absolute path",
+							"Relative path (CWD)",
+							"Path relative to HOME",
+							"Filename ",
+							"Filename without extension",
+							"Extension",
+						}
+						vim.ui.select(sorted_keys, {
+								prompt = "What do you want to copy",
+								format_item = function(item)
+									return string.format("%s: %s", item, options[item])
+								end
 							},
-							{ prompt = "Choose to copy to clipboard" },
 							function(choice)
 								if choice then
-									local i =
-										tonumber(choice:sub(1, 1))
-									local result = results[i]
+									local result = options[choice]
 									vim.fn.setreg('"', result)
-									-- vim.notify("Copied: " .. result)
+									vim.fn.setreg('0', result)
+									vim.notify("Copied: " .. result, vim.log.levels.INFO)
 								end
 							end
 						)
