@@ -1,0 +1,81 @@
+return {
+-- 	"nvim-neo-tree/neo-tree.nvim",
+--
+-- 	-- NOTE: this is the version of the plugin to use
+-- 	version = "3.x",
+--
+-- 	-- NOTE: this plugin is loaded on startup and not lazy loaded
+-- 	lazy = false,
+--
+-- 	-- NOTE: here we define the dependencies
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 		"nvim-tree/nvim-web-devicons",
+-- 		"MunifTanjim/nui.nvim",
+-- 	},
+--
+-- 	-- NOTE: in the config function we define some keymaps to work with neotree
+-- 	config = function()
+-- 		-- NOTE: here we define the options we want for neotree
+-- 		require "neo-tree".setup({
+-- 			popup_border_style = "rounded",
+-- 			enable_git_status = true,
+-- 			use_libuv_file_watcher = true,
+-- 			-- sources = {"filesystem", "document_symbols"},
+-- 			window = {
+-- 				position = "left",
+-- 				width = 25,
+-- 				mappings = {
+-- 					["c"] = function(state)
+-- 						local node = state.tree:get_node()
+-- 						local filepath = node:get_id()
+-- 						local filename = node.name
+-- 						local modify = vim.fn.fnamemodify
+--
+-- 						local options = {
+-- 							["Absolute path"] = filepath,
+-- 							["Relative path (CWD)"] = modify(filepath, ":."),
+-- 							["Path relative to HOME"] = modify(filepath, ":~"),
+-- 							["Filename"] = filename,
+-- 							["Filename without extension"] = modify(filename, ":r"),
+-- 							["Extension"] = modify(filename, ":e"),
+-- 						}
+--
+-- 						local sorted_keys = {
+-- 							"Absolute path",
+-- 							"Relative path (CWD)",
+-- 							"Path relative to HOME",
+-- 							"Filename ",
+-- 							"Filename without extension",
+-- 							"Extension",
+-- 						}
+-- 						vim.ui.select(sorted_keys, {
+-- 								prompt = "What do you want to copy",
+-- 								format_item = function(item)
+-- 									return string.format("%s: %s", item, options[item])
+-- 								end
+-- 							},
+-- 							function(choice)
+-- 								if choice then
+-- 									local result = options[choice]
+-- 									vim.fn.setreg('"', result)
+-- 									vim.fn.setreg('0', result)
+-- 									vim.notify("Copied: " .. result, vim.log.levels.INFO)
+-- 								end
+-- 							end
+-- 						)
+-- 					end,
+-- 				},
+-- 			},
+-- 		})
+--
+-- 		-- NOTE: Keymaps defined here:
+-- 		vim.keymap.set(
+-- 			"n",
+-- 			"<leader>e",
+-- 			"<cmd> Neotree toggle left<CR>"
+-- 		)
+-- 		vim.keymap.set("n", "<leader>fe", "<cmd> Neotree float<CR>")
+-- 		vim.keymap.set("n", "<leader>le", "<cmd> Neotree focus<CR>")
+-- 	end,
+}

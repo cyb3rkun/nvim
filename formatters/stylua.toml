@@ -1,0 +1,4 @@
+collapse_simple_statement = "Always"
+column_width = 70
+call_parentheses = "None"
+no_call_parentheses = true

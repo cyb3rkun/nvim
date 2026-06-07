@@ -1,0 +1,7 @@
+{
+	"greetings": {
+		"prefix": "hello",
+		"body": ["hello there how are you?", "$0"],
+		"description": "Greetings"
+	}
+}
